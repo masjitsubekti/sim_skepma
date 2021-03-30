@@ -22,8 +22,5 @@
     "url": "https://github.com/masjitsubekti/sim_skepma/issues"
   },
   "homepage": "https://github.com/masjitsubekti/sim_skepma#readme",
-  "dependencies": {
-    "axios": "^0.21.1",
-    "vuelidate": "^0.7.6"
-  }
+  "dependencies": {}
 }
