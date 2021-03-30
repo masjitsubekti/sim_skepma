@@ -6,6 +6,17 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
+	public function __construct()
+    {
+		// parent::__construct();
+        helper('sistem_helper');
+		// $this->apl = get_apl($this);
+		
+	
+        // $this->cek_login();
+        // $this->auth_model = new AuthModel();
+		must_login();
+	}
 	public function index()
 	{
 

@@ -1,0 +1,29 @@
+{
+  "name": "sim_skepma",
+  "version": "1.0.0",
+  "description": "Sistem Informasi SKEPMA",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masjitsubekti/sim_skepma.git"
+  },
+  "keywords": [
+    "sim_skepma"
+  ],
+  "author": "Masjit Subekti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/masjitsubekti/sim_skepma/issues"
+  },
+  "homepage": "https://github.com/masjitsubekti/sim_skepma#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "vuelidate": "^0.7.6"
+  }
+}

@@ -31,14 +31,16 @@ class Database extends Config
 	 * @var array
 	 */
 	public $default = [
-		'DSN'      => '',
+		// 'DSN'      => 'pgsql:host=localhost;port=5432;dbname=db_skepma',
+		// 'DSN' => 'Postgre://postgres:12345678@127.0.0.1:5432/db_skepma',
+		'DSN' => '',
 		'hostname' => 'localhost',
-		'username' => '',
-		'password' => '',
-		'database' => '',
-		'DBDriver' => 'MySQLi',
+		'username' => 'Postgres',
+		'password' => '1234',
+		'database' => 'db_skepma',
+		'DBDriver' => 'Postgre',
 		'DBPrefix' => '',
-		'pConnect' => false,
+		'pConnect' => true,
 		'DBDebug'  => (ENVIRONMENT !== 'production'),
 		'charset'  => 'utf8',
 		'DBCollat' => 'utf8_general_ci',
@@ -47,7 +49,8 @@ class Database extends Config
 		'compress' => false,
 		'strictOn' => false,
 		'failover' => [],
-		'port'     => 3306,
+		'port'     => 5432,
+		// 'dbport' => '3306',
 	];
 
 	/**
