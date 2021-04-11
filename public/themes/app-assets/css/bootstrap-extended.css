@@ -328,8 +328,8 @@ pre code {
 /* Form specific Scss */
 label {
   color : #464646;
-  font-size : 0.85rem;
-  margin-bottom : 0;
+  /* font-size : 0.85rem; */
+  /* margin-bottom : 0; */
   padding-left : 0.2rem;
 }
 
@@ -1714,7 +1714,8 @@ button, html [type='button'], [type='reset'], [type='submit'] {
   /* For sm screen*/
 }
 .header-navbar.fixed-top {
-  left : 260px;
+  left : 250px;
+  /* modefied */
 }
 .header-navbar[class*='bg-'] .navbar-nav .nav-item > a {
   color : #FFFFFF !important;
@@ -1732,17 +1733,19 @@ button, html [type='button'], [type='reset'], [type='submit'] {
   margin : 1.3rem 2.2rem 0;
   border-radius : 0.5rem;
   position : fixed;
-  width : calc( 100vw - (100vw - 100%) - calc(2.2rem * 2) - 260px);
+  width : calc( 100vw - (100vw - 100%) - calc(2.2rem * 2) - 250px);
   z-index : 12;
   right : 0;
+  /* modefied */
 }
 .header-navbar.navbar-static-top {
   background : transparent;
   box-shadow : none !important;
   top : 0;
   right : 0;
-  left : 260px;
-  width : calc(100vw - (100vw - 100%) - 260px);
+  left : 250px;
+  width : calc(100vw - (100vw - 100%) - 250px);
+  /* modefied */
 }
 .header-navbar .navbar-wrapper {
   width : 100%;
@@ -2229,8 +2232,9 @@ body[data-col='1-column'] .header-navbar.floating-nav {
 
 @media (min-width: 1200px) and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   body:not([data-col='1-columns']) .header-navbar.floating-nav {
-    width : calc(100vw - (100vw - 100%) - 60px - 260px);
+    width : calc(100vw - (100vw - 100%) - 60px - 250px);
   }
+  /* modefied */
 }
 
 @media (max-width: 1199.98px) {
@@ -2406,7 +2410,7 @@ body[data-col='1-column'] .header-navbar.floating-nav {
   margin-bottom : 2.2rem;
   border : none;
   border-radius : 0.5rem;
-  box-shadow : 0 4px 25px 0 rgba(0, 0, 0, 0.1);
+  box-shadow : 0 4px 4px 0 rgba(0, 0, 0, 0.1);
   -webkit-transition : all 0.3s ease-in-out;
           transition : all 0.3s ease-in-out;
 }
@@ -3373,7 +3377,7 @@ _:-ms-lang(x), .toast-bs-container {
   line-height : 1.5rem;
 }
 
-.pagination .page-item {
+/* .pagination .page-item {
   border-radius : 5rem;
 }
 .pagination .page-item.prev-item .page-link, .pagination .page-item.next-item .page-link, .pagination .page-item.first .page-link, .pagination .page-item.last .page-link {
@@ -3501,15 +3505,17 @@ _:-ms-lang(x), .toast-bs-container {
   -webkit-transform : scale(1);
       -ms-transform : scale(1);
           transform : scale(1);
-}
+} */
 
-.modal .modal-header {
+/* .modal .modal-header {
   background-color : #F8F8F8;
   border-radius : 0.42rem;
   padding : 0.8rem;
   border-bottom : none;
-}
-.modal .modal-header .close {
+} */
+
+/* modified */
+/* .modal .modal-header .close {
   padding : 0.2rem 0.62rem;
   box-shadow : 0 5px 20px 0 rgba(0, 0, 0, 0.1);
   border-radius : 0.357rem;
@@ -3521,29 +3527,30 @@ _:-ms-lang(x), .toast-bs-container {
   -webkit-transform : translate(8px, -2px);
       -ms-transform : translate(8px, -2px);
           transform : translate(8px, -2px);
-}
+} */
 .modal .modal-header .close span {
-  font-weight : 400;
-  font-size : 2rem;
-  color : #7367F0;
+  /* font-weight : 400; */
+  font-size : 31px;
+  /* color : #7367F0; */
 }
-.modal .modal-header .close:hover, .modal .modal-header .close:focus, .modal .modal-header .close:active {
+/* .modal .modal-header .close:hover, .modal .modal-header .close:focus, .modal .modal-header .close:active {
   opacity : 1;
   outline : none;
   -webkit-transform : translate(5px, 3px);
       -ms-transform : translate(5px, 3px);
           transform : translate(5px, 3px);
   box-shadow : none;
-}
-.modal .modal-header[class*='bg-'] {
+} */
+/* .modal .modal-header[class*='bg-'] {
   color : #FFFFFF;
   border-bottom-left-radius : 5px;
   border-bottom-right-radius : 5px;
-}
+} */
 .modal .modal-header[class*='bg-'] .modal-title {
   color : #FFFFFF;
 }
-.modal .modal-header.bg-primary .close span {
+/* modified */
+/* .modal .modal-header.bg-primary .close span {
   color : #7367F0;
 }
 .modal .modal-header.bg-success .close span {
@@ -3560,7 +3567,7 @@ _:-ms-lang(x), .toast-bs-container {
 }
 .modal .modal-header.bg-dark .close span {
   color : #343A40;
-}
+} */
 
 .modal .modal-content {
   border : none;

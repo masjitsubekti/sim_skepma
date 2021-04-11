@@ -6,6 +6,8 @@ use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use Config\Database;
+use App\Libraries\Uuid;
 
 /**
  * Class BaseController
@@ -21,14 +23,20 @@ use Psr\Log\LoggerInterface;
 class BaseController extends Controller
 {
 	/**
+	 * Instance of the main Request object.
+	 *
+	 * @var HTTP\IncomingRequest
+	 */
+	protected $request;
+
+	/**
 	 * An array of helpers to be loaded automatically upon
 	 * class instantiation. These helpers will be available
 	 * to all other controllers that extend BaseController.
 	 *
 	 * @var array
 	 */
-	protected $helpers = ['sistem_helper','url'];
-	// protected $helpers = array('url','sistem','form','pagination','string','upload');
+	protected $helpers = ['sistem_helper', 'pagination_helper', 'url'];
 
 	/**
 	 * Constructor.
@@ -46,5 +54,12 @@ class BaseController extends Controller
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
+
+		// Load connection database in controller
+		$this->db = Database::connect();
+		// Load Costum Library UUID
+		$this->uuid = new Uuid();
+		// Load Model App Config
+		$this->config = new \App\Models\ConfigModel();
 	}
 }

@@ -7,8 +7,7 @@ $routes = Services::routes();
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
-if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
-{
+if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
 	require SYSTEMPATH . 'Config/Routes.php';
 }
 
@@ -37,6 +36,13 @@ $routes->get('/', 'Auth::index');
 $routes->post('/check_auth', 'Auth::check_auth');
 $routes->get('/beranda', 'Home::beranda');
 
+// Master Kelompok Kegiatan 
+$routes->get('/master/kelompok-kegiatan', 'KelompokKegiatan::index');
+$routes->post('/kelompok-kegiatan/read-data/(:num)', 'KelompokKegiatan::read_data/$1');
+$routes->post('/kelompok-kegiatan/load-modal', 'KelompokKegiatan::load_modal');
+$routes->post('/kelompok-kegiatan/save', 'KelompokKegiatan::save');
+$routes->post('/kelompok-kegiatan/delete', 'KelompokKegiatan::delete');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
@@ -50,7 +56,6 @@ $routes->get('/beranda', 'Home::beranda');
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
-if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
-{
+if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }

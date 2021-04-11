@@ -22,7 +22,8 @@ html body .content {
   -webkit-backface-visibility : hidden;
           backface-visibility : hidden;
   min-height : calc(100% - 4rem);
-  margin-left : 260px;
+  margin-left : 250px;
+  /* modified */
 }
 html body .content.app-content {
   overflow : hidden;
@@ -184,35 +185,42 @@ html .pace .pace-progress {
 */
 @media (min-width: 992px) {
   body .content-right {
-    width : calc(100vw - (100vw - 100%) - 260px);
+    width : calc(100vw - (100vw - 100%) - 250px);
     float : right;
+    /* modified */
   }
   body .content-left {
-    width : calc(100vw - (100vw - 100%) - 260px);
+    width : calc(100vw - (100vw - 100%) - 250px);
     float : left;
+    /* modified */
   }
   body .content-detached {
     width : 100%;
   }
   body .content-detached.content-right {
     float : right;
-    margin-left : -260px;
+    margin-left : -250px;
+    /* modified */
   }
   body .content-detached.content-right .content-body {
-    margin-left : calc(260px + 2.2rem);
+    margin-left : calc(250px + 2.2rem);
+    /* modified */
   }
   body .content-detached.content-left {
     float : left;
-    margin-right : -260px;
+    margin-right : -250px;
+    /* modified */
   }
   body .content-detached.content-left .content-body {
-    margin-right : calc(260px + 2.2rem);
+    margin-right : calc(250px + 2.2rem);
+    /* modified */
   }
   .sidebar-right.sidebar-sticky {
     float : right !important;
-    margin-left : -260px;
-    width : 260px !important;
+    margin-left : -250px;
+    width : 250px !important;
     margin-top : 6rem;
+    /* modified */
   }
 }
 
@@ -727,12 +735,13 @@ body.fixed-footer footer.footer-dark {
 }
 .main-menu .navbar-header {
   height : 100%;
-  width : 260px;
+  width : 250px;
   height : 5rem;
   position : relative;
   padding : 0.35rem 1rem 0.3rem 1.64rem;
   -webkit-transition : 300ms ease all;
           transition : 300ms ease all;
+  /* modified */
 }
 .main-menu .navbar-header .navbar-brand {
   display : -webkit-box;
@@ -1272,8 +1281,9 @@ body.fixed-footer .main-menu.menu-fixed {
   width : 200px !important;
 }
 
-.width-250 {
-  width : 250px !important;
+.width-260 {
+  width : 260px !important;
+  /* modified */
 }
 
 .width-300 {
@@ -1412,8 +1422,9 @@ body.fixed-footer .main-menu.menu-fixed {
   height : 200px !important;
 }
 
-.height-250 {
-  height : 250px !important;
+.height-260 {
+  height : 260px !important;
+  /* modified */
 }
 
 .height-300 {

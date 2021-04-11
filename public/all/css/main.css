@@ -1,0 +1,127 @@
+.dimScreen {
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	/* Just to keep it at the very top */
+}
+
+.lds-ripple {
+	display: inline-block;
+	position: relative;
+	width: 64px;
+	height: 64px;
+	top: 42%;
+	left: 48%;
+}
+
+.lds-ripple div {
+	position: absolute;
+	border: 4px solid #fff;
+	opacity: 1;
+	border-radius: 50%;
+	animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple div:nth-child(2) {
+	animation-delay: -0.5s;
+}
+
+@keyframes lds-ripple {
+	0% {
+		top: 28px;
+		left: 28px;
+		width: 0;
+		height: 0;
+		opacity: 1;
+	}
+
+	100% {
+		top: -1px;
+		left: -1px;
+		width: 58px;
+		height: 58px;
+		opacity: 0;
+	}
+}
+
+label.error-block {
+	color: red;
+	margin-top: 5px;
+	font-weight: 400;
+}
+
+.row_hover:hover {
+	background-color: #dff9fb;
+}
+
+.circular {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	position: relative;
+	overflow: hidden;
+}
+
+.circular img {
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.pull-right {
+	float: right;
+}
+
+.pull-left {
+	float: left;
+}
+
+#preloader{
+    background-color : rgba(0, 0, 0, 0.5) !important;
+}
+.chase-dot:before{
+    content:'';
+    display:block;
+    width:25%;
+    height:25%;
+    background-color:#ecf0f1 !important;
+    border-radius:100%;
+}
+
+.shade {
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.table-bordered td, .table-bordered th {
+    border: 1px solid #d8dbe0 !important;
+}
+
+.tr-head {
+	background-color: #495057;
+	color: white;
+	text-align: center;
+}
+
+/* .select2{
+	width:100% !important;
+}
+.select2-container .select2-selection--single {
+	height:34px !important;
+	padding : 2px !important;
+	border : 1px solid #d8dbe0 !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+	top : 4px !important;
+} */

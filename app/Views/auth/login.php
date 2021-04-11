@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,10 +31,11 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/themes/app-assets/css/plugins/extensions/toastr.css">
     <style>
         .error-validasi {
-            color : red;
+            color: red;
         }
     </style>
 </head>
+
 <body class="vertical-layout vertical-menu-modern 1-column  navbar-floating footer-static bg-full-screen-image  blank-page blank-page" data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
     <div id="app" class="app-content content">
         <div class="content-overlay"></div>
@@ -94,11 +96,7 @@
                                                         <div class="text-right"><a href="auth-forgot-password.html" class="card-link">Forgot Password?</a></div>
                                                     </div>
                                                     <a href="javascript:;" class="btn btn-outline-primary float-left btn-inline">Register</a>
-                                                    <button 
-                                                        type="submit" 
-                                                        class="btn btn-primary float-right btn-inline"
-                                                        @click.prevent="auth()"
-                                                        :disabled="(isLoading==true) ? true: false">
+                                                    <button type="submit" class="btn btn-primary float-right btn-inline" @click.prevent="auth()" :disabled="(isLoading==true) ? true: false">
                                                         <i :class="(isLoading==true) ? 'fa fa-spin fa-spinner': ''"></i> Login
                                                     </button>
                                                 </form>
@@ -139,11 +137,12 @@
     <script src="<?php echo base_url() ?>/all/vuelidate/vuelidate.min.js"></script>
     <script src="<?php echo base_url() ?>/all/vuelidate/validators.min.js"></script>
 </body>
+
 </html>
 <script>
-    const site_url = "<?=site_url()?>";
-    const base_url = "<?=base_url()?>";
-    
+    const site_url = "<?= site_url() ?>";
+    const base_url = "<?= base_url() ?>";
+
     Vue.use(window.vuelidate.default)
     new Vue({
         el: '#app',
@@ -154,58 +153,67 @@
         },
         validations: {
             username: {
-                isRequired:validators.required
+                isRequired: validators.required
             },
             password: {
-                isRequired:validators.required
+                isRequired: validators.required
             },
         },
-        created(){
+        created() {
             // this.load_data()
         },
-        methods:{
-            load_data:function(params) {
-            //   console.log("Hello Word")
+        methods: {
+            load_data: function(params) {
+                //   console.log("Hello Word")
                 // this.$v.$reset()
             },
 
-            auth:function(event){
+            auth: function(event) {
                 const self = this;
                 self.$v.username.$touch();
                 self.$v.password.$touch();
                 if (self.$v.username.$invalid || self.$v.password.$invalid) {
                     console.log('error form invalid')
-                }else{
-                    if(self.isLoading==false){
+                } else {
+                    if (self.isLoading == false) {
                         toastr.clear();
                         self.isLoading = true;
                         var formdata = new FormData();
                         formdata.append('username', self.username);
                         formdata.append('password', self.password);
                         axios({
-                            method: 'post',
-                            url: site_url+'/check_auth',
-                            data: formdata,
-                        })
-                        .then(function (response){
-                            if(response.data.success==true){
-                                setTimeout(function(){
-                                    toastr.success(response.data.message, 'Berhasil', { "closeButton": true,  "timeOut": 2000});
-                                    setTimeout(function(){
+                                method: 'post',
+                                url: site_url + '/check_auth',
+                                data: formdata,
+                            })
+                            .then(function(response) {
+                                if (response.data.success == true) {
+                                    setTimeout(function() {
+                                        toastr.success(response.data.message, 'Berhasil', {
+                                            "closeButton": true,
+                                            "timeOut": 2000
+                                        });
+                                        setTimeout(function() {
+                                            self.isLoading = false;
+                                            window.location.href = site_url + '/beranda';
+                                        }, 1500);
+                                    }, 1000);
+                                } else {
+                                    setTimeout(function() {
+                                        toastr.warning(response.data.message, 'Maaf', {
+                                            "closeButton": true,
+                                            "timeOut": 2500
+                                        });
                                         self.isLoading = false;
-                                        window.location.href = site_url+'/beranda';
-                                    }, 1500);
-                                }, 1000);
-                            }else{
-                                setTimeout(function(){
-                                    toastr.warning(response.data.message, 'Gagal', { "closeButton": true,  "timeOut": 2500});
-                                    self.isLoading = false;
-                                }, 1000);
-                            }
-                        })
-                        .catch((err)=>{
-                            toastr.error(response.data.message, 'Gagal', { "closeButton": true,  "timeOut": 2000});
-                        })
+                                    }, 1000);
+                                }
+                            })
+                            .catch((err) => {
+                                toastr.error(response.data.message, 'Maaf', {
+                                    "closeButton": true,
+                                    "timeOut": 2000
+                                });
+                            })
                     }
 
                 }

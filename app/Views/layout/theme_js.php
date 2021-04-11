@@ -1,5 +1,4 @@
 <!-- BEGIN: Vendor JS-->
-<script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/vendors.min.js"></script>
 
 <!-- BEGIN: Theme JS-->
 <script src="<?php echo base_url() ?>/themes/app-assets/js/core/app-menu.js"></script>
@@ -8,7 +7,7 @@
 
 <script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/charts/apexcharts.min.js"></script>
 <script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/extensions/tether.min.js"></script>
-<script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/extensions/shepherd.min.js"></script>
+<!-- <script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/extensions/shepherd.min.js"></script> -->
 
 <!-- BEGIN: Page JS-->
 <script src="<?php echo base_url() ?>/themes/app-assets/js/scripts/pages/dashboard-analytics.js"></script>

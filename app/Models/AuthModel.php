@@ -10,9 +10,6 @@ class AuthModel extends Model
                 where (email = '$email' or username = '$email')  
                 limit 1
         ");
-        // $query = $this->table('users')
-        // ->where('username', $email);
-        // ->countAll();
         return $query;
     }
     public function cek_login($user_id){

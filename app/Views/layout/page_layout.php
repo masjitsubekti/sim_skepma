@@ -12,11 +12,13 @@
     <?= $this->include('layout/theme_css') ?>
 </head>
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
-
+    <!-- Loader -->
+    <div id="div_dimscreen" class="dimScreen" style="display:none;">
+      <div class="lds-ripple"><div></div><div></div></div>
+    </div>
     <?= $this->include('layout/theme_header') ?>
     
     <?= $this->include('layout/theme_sidebar') ?>
-    
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
