@@ -43,6 +43,13 @@ $routes->post('/kelompok-kegiatan/load-modal', 'KelompokKegiatan::load_modal');
 $routes->post('/kelompok-kegiatan/save', 'KelompokKegiatan::save');
 $routes->post('/kelompok-kegiatan/delete', 'KelompokKegiatan::delete');
 
+// Master Kegiatan
+$routes->get('/master/kegiatan', 'Kegiatan::index');
+$routes->post('/kegiatan/read-data/(:num)', 'Kegiatan::readData/$1');
+$routes->post('/kegiatan/load-modal', 'Kegiatan::loadModal');
+$routes->post('/kegiatan/save', 'Kegiatan::save');
+$routes->post('/kegiatan/delete', 'Kegiatan::delete');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

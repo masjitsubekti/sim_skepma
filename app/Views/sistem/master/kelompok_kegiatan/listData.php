@@ -2,11 +2,12 @@
 	if($list->getNumRows()!=0){
 ?>
 <div class="table-responsive">
-    <table class="table table-bordered table-stripped">
-        <thead>
+    <table class="table table-bordered table-hover">
+        <thead class="tr-head">
             <tr>
-                <th width="5%" class="text-center sortable" id="column_waktu" data-sort="desc" onclick="sort_table('#column_waktu','created_at')">No</th>
-                <th width="40%" class="sortable" id="column_nama" data-sort="" onclick="sort_table('#column_nama','nama_kelompok_kegiatan')">Nama Kegiatan</th>
+                <th width="5%" class="text-center sortable" id="column_urutan" data-sort="asc" onclick="sort_table('#column_urutan','urutan')">No </th>
+                <th width="40%" class="sortable" id="column_nama" data-sort="" onclick="sort_table('#column_nama','nama_kelompok_kegiatan')">Nama Kegiatan </th>
+                <th width="5%" class="sortable" id="column_urut" data-sort="" onclick="sort_table('#column_urut','urutan')">Urutan </th>
                 <th width="30%">Keterangan</th>
                 <th width="10%" class="text-center">Aksi</th>
             </tr>
@@ -18,6 +19,7 @@
                 <tr>
                     <td class="text-center" scope="row"><?= $no ?>.</td>
                     <td><?= $row->nama_kelompok_kegiatan ?></td>
+                    <td class="text-center"><?= $row->urutan ?></td>
                     <td><?= $row->keterangan ?></td>
                     <td class="text-center">
                         <a href="javascript:;" data-id="<?=$row->id_kelompok_kegiatan?>" data-name="<?=$row->nama_kelompok_kegiatan?>" class="btn btn-sm btn-icon btn-warning waves-effect waves-light btn-ubah" data-toggle="tooltip" title="Edit Kelompok Kegiatan"><i style="color:#fff;" class="fa fa-edit"></i></a>

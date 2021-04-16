@@ -1,25 +1,16 @@
 <?php
-
 namespace App\Controllers;
-// $parser = \Config\Services::parser();
-// $parser = new \CodeIgniter\View\Parser();
+
 
 class Home extends BaseController
 {
+	private $nama_menu = 'Beranda';
 	public function __construct()
     {
-		// parent::__construct();
-        helper('sistem_helper');
-		// $this->apl = get_apl($this);
-		
-	
-        // $this->cek_login();
-        // $this->auth_model = new AuthModel();
-		must_login();
+		// must_login();
 	}
 	public function index()
 	{
-
 		$data['title'] = 'Beranda | SIM SKEPMA';
 		return view('welcome_message', $data);
 	}
@@ -34,13 +25,7 @@ class Home extends BaseController
 	public function beranda()
 	{
 		$data['title'] = 'Beranda | SIM SKEPMA';
+		$data['menu'] = $this->nama_menu;
 		return view('sistem/beranda/beranda', $data);
-
-		// $data = [
-		// 	'blog_title'   => 'My Blog Title',
-		// 	'blog_heading' => 'My Blog Heading',
-		// 	'blog_entries' => $query->getResultArray()
-		// ];
-		// echo $parser->setData($data)->render('sistem/template/template');
 	}
 }

@@ -2,8 +2,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-success">
-                <h4 class="modal-title" id="modal_title_add" style="display:none;"><i class="fa fa-align-justify"></i> Tambah Kelompok Kegiatan</h4>
-                <h4 class="modal-title" id="modal_title_update" style="display:none;"><i class="fa fa-align-justify"></i> Edit Kelompok Kegiatan</h4>
+                <h5 class="modal-title" id="modal_title_add" style="display:none;"><i class="fa fa-align-justify"></i> Tambah Kelompok Kegiatan</h5>
+                <h5 class="modal-title" id="modal_title_update" style="display:none;"><i class="fa fa-align-justify"></i> Edit Kelompok Kegiatan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -19,6 +19,13 @@
                         required 
                     >
                 </div>	
+                <div class="form-group">
+                    <label for="urutan" class="form-label">Urutan <span style="color:red;">*</span></label>
+                    <input class="form-control" id="urutan" name="urutan" type="number" placeholder="Urutan . . ." autocomplete="off" 
+                        value="<?php if(isset($data)){echo $data['urutan'];} ?>"
+                        required 
+                    >
+                </div>
                 <div class="form-group">
                     <label for="keterangan" class="form-label">Keterangan <span style="color:red;">*</span></label>
                     <textarea class="form-control" name="keterangan" id="keterangan" rows="3" placeholder="Keterangan . . ." required><?php if(isset($data)){echo $data['keterangan'];} ?></textarea>		

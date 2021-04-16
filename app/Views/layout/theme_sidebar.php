@@ -1,3 +1,13 @@
+<?php 
+$db = Config\Database::connect();
+$role = 'HA01';
+$menu1 = $db->query("
+    select m.* from c_menu_user mu
+    join c_menu m on mu.id_menu = m.id_menu
+    where mu.id_role = '$role' and  level = 1 
+    order by mu.urutan asc"
+);
+?>
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
@@ -9,48 +19,42 @@
         </ul>
     </div>
     <div class="shadow-bottom"></div>
+    <!-- Menu Sidebar -->
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a href="index.html"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
-                <ul class="menu-content">
-                    <li><a href="dashboard-analytics.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Analytics</span></a>
+            <li class="navigation-header"><span>Menu Navigasi</span></li>
+            <?php foreach ($menu1->getResult() as $m1) {
+                $id_menu_level_1 = $m1->id_menu;
+                $menu2 = $db->query("
+                        select m.* from c_menu_user mu
+                        join c_menu m on mu.id_menu = m.id_menu
+                        where mu.id_role = '$role' and level = 2 and id_parent_menu = '$id_menu_level_1' 
+                        order by mu.urutan asc"
+                );
+                $jml_menu2 = $menu2->getNumRows();
+                if($jml_menu2!=0){ ?>
+                    <li class="nav-item <?= ($m1->nama_menu==$menu) ? 'active' : '' ?>">
+                        <a href="#">
+                            <i class="<?= $m1->class_icon ?>"></i><span class="menu-title" data-i18n="<?= $m1->nama_menu ?>"><?= $m1->nama_menu ?></span>
+                        </a>
+                        <ul class="menu-content">
+                        <?php foreach ($menu2->getResult() as $m2) { ?>
+                            <li class="<?= ($m2->nama_menu==$menu) ? 'active' : '' ?>">
+                                <a href="<?= site_url($m2->link_menu)?>">
+                                    <i class="feather icon-circle"></i><span class="menu-item" data-i18n="<?= $m2->nama_menu ?>"><?= $m2->nama_menu ?></span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        </ul>
                     </li>
-                    <li><a href="dashboard-ecommerce.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">eCommerce</span></a>
+                <?php }else{ ?>
+                    <li class="nav-item <?= ($m1->nama_menu==$menu) ? 'active' : '' ?>">
+                        <a href="<?= site_url($m1->link_menu)?>">
+                            <i class="<?= $m1->class_icon ?>"></i><span class="menu-title" data-i18n="<?= $m1->nama_menu ?>"><?= $m1->nama_menu ?></span>
+                        </a>
                     </li>
-                </ul>
-            </li>
-            <li class=" navigation-header"><span>Apps</span>
-            </li>
-            <li class=" nav-item"><a href="app-email.html"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">Email</span></a>
-            </li>
-            <li class=" nav-item"><a href="app-chat.html"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">Chat</span></a>
-            </li>
-            <li class=" nav-item"><a href="app-todo.html"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">Todo</span></a>
-            </li>
-            <li class=" nav-item"><a href="app-calender.html"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Calender</span></a>
-            </li>
-            <li class=" nav-item"><a href="#"><i class="feather icon-shopping-cart"></i><span class="menu-title" data-i18n="Ecommerce">Ecommerce</span></a>
-                <ul class="menu-content">
-                    <li><a href="app-ecommerce-shop.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Shop">Shop</span></a>
-                    </li>
-                    <li><a href="app-ecommerce-details.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Details">Details</span></a>
-                    </li>
-                    <li><a href="app-ecommerce-wishlist.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Wish List">Wish List</span></a>
-                    </li>
-                    <li><a href="app-ecommerce-checkout.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Checkout">Checkout</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">User</span></a>
-                <ul class="menu-content">
-                    <li><a href="app-user-list.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">List</span></a>
-                    </li>
-                    <li><a href="app-user-view.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">View</span></a>
-                    </li>
-                    <li><a href="app-user-edit.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Edit">Edit</span></a>
-                    </li>
-                </ul>
-            </li>
+                <?php } ?>
+            <?php } ?>
         </ul>
     </div>
 </div>

@@ -29,6 +29,7 @@
 
 <!-- Sort Table -->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/all/css/sort-table.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/themes/app-assets/vendors/css/forms/select/select2.min.css">
 
 <!-- BEGIN: Page CSS-->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/themes/app-assets/css/pages/dashboard-analytics.css">
@@ -42,6 +43,7 @@
 <script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/vendors.min.js"></script>
 <script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
 <script src="<?php echo base_url() ?>/themes/app-assets/js/scripts/extensions/sweet-alerts.js"></script>
+<script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
 <script src="<?php echo base_url() ?>/all/js/sort-table.js"></script>
 <!-- <script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/extensions/toastr.min.js"></script> -->
 

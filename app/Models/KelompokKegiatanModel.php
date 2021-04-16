@@ -9,16 +9,14 @@ class KelompokKegiatanModel extends Model
         'id_kelompok_kegiatan', 
         'nama_kelompok_kegiatan', 
         'keterangan', 
+        'urutan', 
         'created_at', 
         'updated_at'
     ];
     protected $useAutoIncrement = false;
-
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
-    // protected $deletedField  = 'deleted_at';
-    // protected $returnType = 'array';
     
     function list_count($key=""){
         $query = $this->db->query("
