@@ -33,22 +33,39 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'Auth::index');
+$routes->post('/logout', 'Auth::logout');
 $routes->post('/check_auth', 'Auth::check_auth');
-$routes->get('/beranda', 'Home::beranda');
+$routes->get('/beranda', 'Home::index', ['filter' => 'auth']);
 
 // Master Kelompok Kegiatan 
-$routes->get('/master/kelompok-kegiatan', 'KelompokKegiatan::index');
+$routes->get('/master/kelompok-kegiatan', 'KelompokKegiatan::index', ['filter' => 'auth']);
 $routes->post('/kelompok-kegiatan/read-data/(:num)', 'KelompokKegiatan::read_data/$1');
 $routes->post('/kelompok-kegiatan/load-modal', 'KelompokKegiatan::load_modal');
 $routes->post('/kelompok-kegiatan/save', 'KelompokKegiatan::save');
 $routes->post('/kelompok-kegiatan/delete', 'KelompokKegiatan::delete');
 
 // Master Kegiatan
-$routes->get('/master/kegiatan', 'Kegiatan::index');
+$routes->get('/master/kegiatan', 'Kegiatan::index', ['filter' => 'auth']);
 $routes->post('/kegiatan/read-data/(:num)', 'Kegiatan::readData/$1');
 $routes->post('/kegiatan/load-modal', 'Kegiatan::loadModal');
 $routes->post('/kegiatan/save', 'Kegiatan::save');
 $routes->post('/kegiatan/delete', 'Kegiatan::delete');
+
+// Master Detail Kegiatan
+$routes->get('/master/kegiatan/detail-kegiatan/(:any)', 'Kegiatan::detailKegiatan/$1', ['filter' => 'auth']);
+$routes->post('/kegiatan/read-data-detail/(:num)', 'Kegiatan::readDataDetail/$1');
+$routes->post('/kegiatan/load-modal-detail', 'Kegiatan::loadModalDetail');
+$routes->post('/kegiatan/save-detail', 'Kegiatan::saveDetail');
+$routes->post('/kegiatan/delete-detail', 'Kegiatan::deleteDetail');
+
+// $routes->group('admin', function($routes){
+// 	$routes->get('news', 'NewsAdmin::index');
+// 	$routes->get('news/(:segment)/preview', 'NewsAdmin::preview/$1');
+//  $routes->add('news/new', 'NewsAdmin::create');
+// 	$routes->add('news/(:segment)/edit', 'NewsAdmin::edit/$1');
+// 	$routes->get('news/(:segment)/delete', 'NewsAdmin::delete/$1');
+// });
+
 
 /*
  * --------------------------------------------------------------------

@@ -63,6 +63,7 @@ class Autoload extends AutoloadConfig
 	 * @var array<string, string>
 	 */
 	public $classmap = [
-		'Uuid' => APPPATH .'/Libraries/Uuid.php'
+		'Uuid' => APPPATH .'/Libraries/Uuid.php',
+		'Breadcrumb' => APPPATH .'/Libraries/Breadcrumb.php'
 	];
 }

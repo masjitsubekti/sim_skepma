@@ -20,6 +20,7 @@
                     <td><?= $row->nama_kegiatan ?></td>
                     <td><?= $row->kelompok_kegiatan ?></td>
                     <td class="text-center">
+                        <a href="<?= site_url('master/kegiatan/detail-kegiatan/'.$row->id_kegiatan) ?>" data-id="<?=$row->id_kegiatan?>" data-name="<?=$row->nama_kegiatan?>" class="btn btn-sm btn-icon btn-info waves-effect waves-light btn-detail" data-toggle="tooltip" title="Detail Kegiatan"><i style="color:#fff;" class="fa fa-eye"></i></a>
                         <a href="javascript:;" data-id="<?=$row->id_kegiatan?>" data-name="<?=$row->nama_kegiatan?>" class="btn btn-sm btn-icon btn-warning waves-effect waves-light btn-ubah" data-toggle="tooltip" title="Edit Kegiatan"><i style="color:#fff;" class="fa fa-edit"></i></a>
                         <a href="javascript:;" data-id="<?=$row->id_kegiatan?>" data-name="<?=$row->nama_kegiatan?>" class="btn btn-sm btn-icon btn-danger waves-effect waves-light btn-hapus" data-toggle="tooltip" title="Hapus Kegiatan"><i class="fa fa-trash"></i></a>	    
                     </td>
@@ -91,7 +92,7 @@
 		Swal.fire({
 			title: 'Hapus Kegiatan',
 			text: "Apakah Anda yakin menghapus kegiatan : "+title,
-			type: 'warning',
+			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#d33',
 			cancelButtonColor: '#95a5a6',
@@ -110,7 +111,7 @@
 						success: function (data) {
 							if (data.success === true) {
 								Toast.fire({
-									type: 'success',
+									icon: 'success',
 									title: data.message
 								});
 								swal.hideLoading()

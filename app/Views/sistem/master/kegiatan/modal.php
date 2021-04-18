@@ -68,7 +68,7 @@
         Swal.fire({
             title: title,
             text: narasi,
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3498db',
             cancelButtonColor: '#95a5a6',
@@ -88,14 +88,14 @@
                         success: function (data) {
                             if (data.success == true) {
                                 Toast.fire({
-                                    type: 'success',
+                                    icon: 'success',
                                     title: data.message
                                 });
                                 $('#form-modal').modal('hide');
                                 swal.hideLoading()
                                 pageLoad(1);
                             } else {
-                                Swal.fire({type: 'error',title: 'Oops...',text: data.message});
+                                Swal.fire({icon: 'error',title: 'Oops...',text: data.message});
                             }
                         },
                         fail: function (event) {

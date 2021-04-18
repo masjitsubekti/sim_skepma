@@ -6,7 +6,7 @@ use App\Models\KelompokKegiatanModel;
 class KelompokKegiatan extends BaseController
 {	
 	use ResponseTrait;
-	private $nama_menu = 'Kelompok';
+	private $nama_menu = 'Kelompok Kegiatan';
 	public function __construct()
 	{
 		$this->Kelompok_m = new KelompokKegiatanModel();
@@ -18,6 +18,12 @@ class KelompokKegiatan extends BaseController
 		$data['aplikasi'] = $app_config;
 		$data['title'] = $this->nama_menu." | ".$app_config['nama_sistem'];
 		$data['menu'] = $this->nama_menu;
+		// Breadcrumbs
+		$this->breadcrumb->add('Beranda', site_url('beranda'));
+		$this->breadcrumb->add('Master Data', 'javascript:;');
+		$this->breadcrumb->add('Kelompok Kegiatan', site_url('master/kelompok-kegiatan'));
+		$data['breadcrumbs'] = $this->breadcrumb->render();
+
 		return view('sistem/master/kelompok_kegiatan/index', $data);
 	}
 

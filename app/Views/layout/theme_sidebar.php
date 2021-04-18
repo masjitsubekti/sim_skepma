@@ -11,9 +11,11 @@ $menu1 = $db->query("
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item mr-auto"><a class="navbar-brand" href="<?php echo base_url() ?>/themes/html/ltr/vertical-menu-template/index.html">
-                    <div class="brand-logo"></div>
-                    <h2 class="brand-text mb-0">Vuexy</h2>
+            <li class="nav-item mr-auto"><a class="navbar-brand" href="<?php echo base_url('beranda') ?>">
+                    <div class="brand-logo">
+                        <img style="width:130px; height:40px; object-fit:cover;" src="<?= base_url() ?>/all/images/logo/logo-itats.png" alt="">
+                    </div>
+                    <!-- <h2 class="brand-text mb-0">ITATS</h2> -->
                 </a></li>
             <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i class="toggle-icon feather icon-disc font-medium-4 d-none d-xl-block collapse-toggle-icon primary" data-ticon="icon-disc"></i></a></li>
         </ul>
@@ -41,7 +43,7 @@ $menu1 = $db->query("
                         <?php foreach ($menu2->getResult() as $m2) { ?>
                             <li class="<?= ($m2->nama_menu==$menu) ? 'active' : '' ?>">
                                 <a href="<?= site_url($m2->link_menu)?>">
-                                    <i class="feather icon-circle"></i><span class="menu-item" data-i18n="<?= $m2->nama_menu ?>"><?= $m2->nama_menu ?></span>
+                                    <i class="<?= $m2->class_icon ?>"></i><span class="menu-item" data-i18n="<?= $m2->nama_menu ?>"><?= $m2->nama_menu ?></span>
                                 </a>
                             </li>
                         <?php } ?>

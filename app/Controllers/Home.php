@@ -1,7 +1,6 @@
 <?php
 namespace App\Controllers;
 
-
 class Home extends BaseController
 {
 	private $nama_menu = 'Beranda';
@@ -9,11 +8,11 @@ class Home extends BaseController
     {
 		// must_login();
 	}
-	public function index()
-	{
-		$data['title'] = 'Beranda | SIM SKEPMA';
-		return view('welcome_message', $data);
-	}
+	// public function index()
+	// {
+	// 	$data['title'] = 'Beranda | SIM SKEPMA';
+	// 	return view('welcome_message', $data);
+	// }
 
 	public function auth()
 	{
@@ -22,10 +21,16 @@ class Home extends BaseController
 		return view('auth/login', $data);
 	}
 
-	public function beranda()
+	public function index()
 	{
-		$data['title'] = 'Beranda | SIM SKEPMA';
+		$app_config = $this->config->app_config();
+		$data['aplikasi'] = $app_config;
+		$data['title'] = $this->nama_menu." | ".$app_config['nama_sistem'];
 		$data['menu'] = $this->nama_menu;
+		// Breadcrumbs
+		$this->breadcrumb->add('Beranda', site_url('beranda'));
+		$data['breadcrumbs'] = $this->breadcrumb->render();
+		
 		return view('sistem/beranda/beranda', $data);
 	}
 }

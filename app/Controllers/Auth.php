@@ -201,14 +201,11 @@ class Auth extends BaseController
 	// 	echo json_encode($response);
 	// }
 
-	// function logout(){
-	// 	$username = $this->session->userdata('auth_username');
-	// 	insert_log($username, "Logout Aplikasi", 'Berhasil Logout', $this->input->ip_address(), $this->agent->browser(), $this->agent->agent_string());
-
-	// 	$this->session->sess_destroy();
-	// 	$data['success'] = TRUE;
-	// 	$data['message'] = "Anda Berhasil Logout !";
-	// 	$data['page'] = "Auth";
-	// 	echo json_encode($data);
-	// }
+	function logout(){
+		session()->destroy();
+		$data['success'] = TRUE;
+		$data['message'] = "Anda Berhasil Logout !";
+		$data['page'] = "Auth";
+		echo json_encode($data);
+	}
 }

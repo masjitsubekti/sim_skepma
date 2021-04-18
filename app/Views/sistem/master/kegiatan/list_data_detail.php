@@ -5,10 +5,11 @@
     <table class="table table-bordered table-hover">
         <thead class="tr-head">
             <tr>
-                <th width="5%" class="text-center sortable" id="column_urutan" data-sort="asc" onclick="sort_table('#column_urutan','urutan')">No </th>
-                <th width="40%" class="sortable" id="column_nama" data-sort="" onclick="sort_table('#column_nama','nama_kelompok_kegiatan')">Nama Kegiatan </th>
-                <th width="5%" class="sortable" id="column_urut" data-sort="" onclick="sort_table('#column_urut','urutan')">Urutan </th>
-                <th width="30%">Keterangan</th>
+                <th width="5%" class="text-center sortable" id="column_waktu" data-sort="desc" onclick="sort_table('#column_waktu','created_at')">No </th>
+                <th width="20%" class="sortable" id="column_kategori" data-sort="" onclick="sort_table('#column_kategori','nama_kategori')">Kategori </th>
+                <th width="20%" class="sortable" id="column_deskripsi" data-sort="" onclick="sort_table('#column_deskripsi','deskripsi')">Detail Deskripsi </th>
+                <th width="10%" class="sortable" id="column_poin" data-sort="" onclick="sort_table('#column_poin','poin')">Poin </th>
+                <th width="10%">Bukti Terkait </th>
                 <th width="10%" class="text-center">Aksi</th>
             </tr>
         </thead>
@@ -18,12 +19,13 @@
             foreach ($list->getResult() as $row) { $no++ ?>
                 <tr>
                     <td class="text-center" scope="row"><?= $no ?>.</td>
-                    <td><?= $row->nama_kelompok_kegiatan ?></td>
-                    <td class="text-center"><?= $row->urutan ?></td>
-                    <td><?= $row->keterangan ?></td>
+                    <td><?= $row->nama_kategori ?></td>
+                    <td><?= $row->deskripsi ?></td>
+                    <td class="text-center"><?= $row->poin ?></td>
+                    <td class="text-center"><?= $row->bukti_terkait ?></td>
                     <td class="text-center">
-                        <a href="javascript:;" data-id="<?=$row->id_kelompok_kegiatan?>" data-name="<?=$row->nama_kelompok_kegiatan?>" class="btn btn-sm btn-icon btn-warning waves-effect waves-light btn-ubah" data-toggle="tooltip" title="Edit Kelompok Kegiatan"><i style="color:#fff;" class="fa fa-edit"></i></a>
-                        <a href="javascript:;" data-id="<?=$row->id_kelompok_kegiatan?>" data-name="<?=$row->nama_kelompok_kegiatan?>" class="btn btn-sm btn-icon btn-danger waves-effect waves-light btn-hapus" data-toggle="tooltip" title="Hapus Kelompok Kegiatan"><i class="fa fa-trash"></i></a>	    
+                        <a href="javascript:;" data-id="<?=$row->id_detail_kegiatan?>" data-name="<?=$row->kategori?>" class="btn btn-sm btn-icon btn-warning waves-effect waves-light btn-ubah" data-toggle="tooltip" title="Edit Kegiatan"><i style="color:#fff;" class="fa fa-edit"></i></a>
+                        <a href="javascript:;" data-id="<?=$row->id_detail_kegiatan?>" data-name="<?=$row->kategori?>" class="btn btn-sm btn-icon btn-danger waves-effect waves-light btn-hapus" data-toggle="tooltip" title="Hapus Kegiatan"><i class="fa fa-trash"></i></a>	    
                     </td>
                 </tr>
             <?php } ?>
@@ -71,11 +73,15 @@
 
     $(".btn-ubah").click(function() {
 		var id = $(this).attr('data-id');
+        var id_kegiatan = $('#id_kegiatan').val();
 		$.ajax({
-			url: '<?= site_url() ?>'+'/kelompok-kegiatan/load-modal',
+			url: '<?= site_url() ?>'+'/kegiatan/load-modal-detail',
 			type: 'post',
 			dataType: 'html',
-            data:{id:id},
+            data:{
+                id:id,
+                id_kegiatan:id_kegiatan
+            },
 			beforeSend: function () {},
 			success: function (result) {    
 				$('#div_modal').html(result);
@@ -91,8 +97,8 @@
         var title = $(this).attr('data-name');
   
 		Swal.fire({
-			title: 'Hapus Kelompok Kegiatan',
-			text: "Apakah Anda yakin data ?",
+			title: 'Hapus Detail Kegiatan',
+			text: "Apakah Anda yakin menghapus data : "+title,
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#d33',
@@ -105,7 +111,7 @@
 					$.ajax({
 						method: 'POST',
 						dataType: 'json',
-						url: '<?= site_url() ?>'+'/kelompok-kegiatan/delete',
+						url: '<?= site_url() ?>'+'/kegiatan/delete-detail',
 						data: {
 							id: id
 						},

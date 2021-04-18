@@ -4,8 +4,8 @@
 <div class="row" id="basic-table">
     <div class="col-12">
         <div class="card">
-            <div class="card-header" style="background-color:#0a85da !important; padding:0.75rem 1.25rem;">
-                <span style="color:#ffffff; font-size:12pt;"><i class="fa fa-bars"></i><b> Kegiatan</b></span>
+            <div class="card-header" style="background-color:#0984e3 !important; padding:0.75rem 1.25rem;">
+                <span style="color:#ffffff;"><i class="fa fa-bars"></i><b> Detail Kegiatan</b></span>
             </div>
             <div class="card-content">
                 <div class="card-body">
@@ -40,6 +40,7 @@
     </div>
 </div>
 <!-- DATA SORT -->
+<input type="hidden" id="id_kegiatan" value="<?= $id_kegiatan ?>">
 <input type="hidden" name="input_id_th" id="input_id_th" value="#column_waktu">
 <input type="hidden" name="input_column" id="input_column" value="created_at">
 <input type="hidden" name="input_sort" id="input_sort" value="desc">
@@ -61,8 +62,9 @@
         var sort = $('#input_sort').val();
         var limit = $('#limit').val();
         var cari = $('#cari').val();
+        var id_kegiatan = $('#id_kegiatan').val();
         $.ajax({
-            url: "<?php echo site_url('kegiatan/read-data/') ?>" + i,
+            url: "<?php echo site_url('kegiatan/read-data-detail/') ?>" + i,
             type: 'post',
             dataType: 'html',
             data: {
@@ -70,6 +72,7 @@
                 cari: cari,
                 column:column,
                 sort:sort,
+                id_kegiatan:id_kegiatan
             },
             beforeSend: function() {},
             success: function(result) {
@@ -80,10 +83,14 @@
     }
 
     $("#btn-add").click(function() {
+        var id_kegiatan = $('#id_kegiatan').val();
         $.ajax({
-            url: "<?php echo site_url('kegiatan/load-modal/') ?>",
+            url: "<?php echo site_url('kegiatan/load-modal-detail/') ?>",
             type: 'post',
             dataType: 'html',
+            data: {
+                id_kegiatan:id_kegiatan
+            },
             beforeSend: function() {},
             success: function(result) {
                 $('#div_modal').html(result);

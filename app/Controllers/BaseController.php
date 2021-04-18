@@ -8,6 +8,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use Config\Database;
 use App\Libraries\Uuid;
+use App\Libraries\Breadcrumb;
 
 /**
  * Class BaseController
@@ -59,6 +60,8 @@ class BaseController extends Controller
 		$this->db = Database::connect();
 		// Load Costum Library UUID
 		$this->uuid = new Uuid();
+		// Load Costum Library Breadcrumb
+		$this->breadcrumb = new Breadcrumb();
 		// Load Model App Config
 		$this->config = new \App\Models\ConfigModel();
 	}

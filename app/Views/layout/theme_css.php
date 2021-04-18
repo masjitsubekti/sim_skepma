@@ -11,7 +11,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/themes/app-assets/css/themes/dark-layout.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/themes/app-assets/css/themes/semi-dark-layout.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/all/css/main.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/themes/app-assets/vendors/css/extensions/sweetalert2.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/themes/app-assets/vendors/css/extensions/sweetalert2.min.css"> -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/all/sweetalert2/sweetalert2.min.css">
 
 <!-- BEGIN: Page CSS-->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/themes/app-assets/css/core/menu/menu-types/vertical-menu.css">
@@ -41,11 +42,13 @@
 
 <!-- Script -->
 <script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/vendors.min.js"></script>
-<script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
+<!-- <script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script> -->
+<script src="<?php echo base_url() ?>/all/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="<?php echo base_url() ?>/themes/app-assets/js/scripts/extensions/sweet-alerts.js"></script>
 <script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
 <script src="<?php echo base_url() ?>/all/js/sort-table.js"></script>
 <!-- <script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/extensions/toastr.min.js"></script> -->
+<script src="<?php echo base_url() ?>/all/vue/vue.js"></script>
 
 <script>
     var site_url = '<?= site_url() ?>/';

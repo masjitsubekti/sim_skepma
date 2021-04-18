@@ -247,36 +247,37 @@ pre code {
   }
 }
 
+/* Modified */
 .form-control::-webkit-input-placeholder {
-  font-size : 0.85rem;
+  /* font-size : 0.85rem; */
   color : rgba(34, 41, 47, 0.4);
   -webkit-transition : all 0.2s ease;
           transition : all 0.2s ease;
 }
 
 .form-control::-moz-placeholder {
-  font-size : 0.85rem;
+  /* font-size : 0.85rem; */
   color : rgba(34, 41, 47, 0.4);
   -moz-transition : all 0.2s ease;
        transition : all 0.2s ease;
 }
 
 .form-control:-ms-input-placeholder {
-  font-size : 0.85rem;
+  /* font-size : 0.85rem; */
   color : rgba(34, 41, 47, 0.4);
   -ms-transition : all 0.2s ease;
       transition : all 0.2s ease;
 }
 
 .form-control::-ms-input-placeholder {
-  font-size : 0.85rem;
+  /* font-size : 0.85rem; */
   color : rgba(34, 41, 47, 0.4);
   -ms-transition : all 0.2s ease;
       transition : all 0.2s ease;
 }
 
 .form-control::placeholder {
-  font-size : 0.85rem;
+  /* font-size : 0.85rem; */
   color : rgba(34, 41, 47, 0.4);
   -webkit-transition : all 0.2s ease;
           transition : all 0.2s ease;
@@ -3530,7 +3531,7 @@ _:-ms-lang(x), .toast-bs-container {
 } */
 .modal .modal-header .close span {
   /* font-weight : 400; */
-  font-size : 31px;
+  font-size : 25px;
   /* color : #7367F0; */
 }
 /* .modal .modal-header .close:hover, .modal .modal-header .close:focus, .modal .modal-header .close:active {
