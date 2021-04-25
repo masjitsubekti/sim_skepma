@@ -28,7 +28,11 @@
                         <div class="col-12">
                             <!-- <h2 class="content-header-title float-left mb-0"><?= $menu ?></h2> -->
                             <!-- <div class="breadcrumb-wrapper col-12"> -->
-                            <?= $breadcrumbs ?>
+                            <?php 
+                                if($menu!='Beranda'){
+                                    echo $breadcrumbs;
+                                }
+                            ?>
                             <!-- </div> -->
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 <?php 
 $db = Config\Database::connect();
-$role = 'HA01';
+$role = session()->get('auth_id_role');
 $menu1 = $db->query("
     select m.* from c_menu_user mu
     join c_menu m on mu.id_menu = m.id_menu

@@ -256,4 +256,11 @@ class Kegiatan extends BaseController
 			return $this->respond($response, 500);
 		}
 	}
+
+	public function kategoriByIdKegiatan()
+	{
+		$id_kegiatan=$this->request->getPost('id_kegiatan');
+		$data=$this->MDetailKegiatan->getDetailKegiatan($id_kegiatan)->getResult();
+		echo json_encode($data);
+	}
 }

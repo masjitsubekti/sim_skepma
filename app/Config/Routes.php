@@ -57,6 +57,11 @@ $routes->post('/kegiatan/read-data-detail/(:num)', 'Kegiatan::readDataDetail/$1'
 $routes->post('/kegiatan/load-modal-detail', 'Kegiatan::loadModalDetail');
 $routes->post('/kegiatan/save-detail', 'Kegiatan::saveDetail');
 $routes->post('/kegiatan/delete-detail', 'Kegiatan::deleteDetail');
+$routes->post('/kegiatan/kategori-by-kegiatan', 'Kegiatan::kategoriByIdKegiatan');
+
+$routes->get('/kegiatan-mahasiswa', 'Mahasiswa::index');
+$routes->get('/kegiatan/pilih-kelompok', 'Mahasiswa::pilihKelompokKegiatan');
+$routes->get('/kegiatan/input-kegiatan/(:any)', 'Mahasiswa::inputKegiatan/$1');
 
 // $routes->group('admin', function($routes){
 // 	$routes->get('news', 'NewsAdmin::index');

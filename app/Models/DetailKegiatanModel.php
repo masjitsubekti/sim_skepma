@@ -49,5 +49,17 @@ class DetailKegiatanModel extends Model
         ");
         return $query;
     }
+
+    function getDetailKegiatan($id_kegiatan){
+        $query = $this->db->query("
+            select x.id_detail_kegiatan, x.nama_kategori, x.deskripsi, x.poin, x.bukti_terkait from(
+                select dk.*, coalesce(dk.kategori::varchar, k.kategori) as nama_kategori from m_detail_kegiatan dk
+                left join m_kategori k on dk.id_kategori = k.id_kategori
+                order by created_at asc
+            )x
+            where x.id_kegiatan = '$id_kegiatan'
+        ");
+        return $query;
+    }
 }
 ?>

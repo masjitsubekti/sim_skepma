@@ -95,7 +95,7 @@
                                                         </div>
                                                         <div class="text-right"><a href="auth-forgot-password.html" class="card-link">Forgot Password?</a></div>
                                                     </div>
-                                                    <a href="javascript:;" class="btn btn-outline-primary float-left btn-inline">Register</a>
+                                                    <!-- <a href="javascript:;" class="btn btn-outline-primary float-left btn-inline">Register</a> -->
                                                     <button type="submit" class="btn btn-primary float-right btn-inline" @click.prevent="auth()" :disabled="(isLoading==true) ? true: false">
                                                         <i :class="(isLoading==true) ? 'fa fa-spin fa-spinner': ''"></i> Login
                                                     </button>

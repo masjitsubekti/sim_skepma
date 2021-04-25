@@ -111,8 +111,8 @@ class KelompokKegiatan extends BaseController
 			return $this->respond($response, 200);
 		} catch (\Exception $e) {
 			$response['success'] = false;
-			$response['message'] = "Hapus data gagal !";
-			return $this->respond($response, 500);
+			$response['message'] = "Hapus data gagal, data sudah digunakan di table lain !";
+			return $this->respond($response, 200);
 		}
 	}
 }

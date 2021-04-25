@@ -1,6 +1,8 @@
 <!-- BEGIN: Header-->
 <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow">
 <!-- style="background:linear-gradient(to right, #3a95d2, #00d2ff);" -->
+<!-- linear-gradient(to right, #88BFE7, #f1f0ea) -->
+<!-- linear-gradient(to right, #0984e3, #fffdf0) -->
     <div class="navbar-wrapper">
         <div class="navbar-container content">
             <div class="navbar-collapse" id="navbar-mobile">

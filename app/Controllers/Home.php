@@ -8,18 +8,6 @@ class Home extends BaseController
     {
 		// must_login();
 	}
-	// public function index()
-	// {
-	// 	$data['title'] = 'Beranda | SIM SKEPMA';
-	// 	return view('welcome_message', $data);
-	// }
-
-	public function auth()
-	{
-
-		$data['title'] = 'Login | SIM SKEPMA';
-		return view('auth/login', $data);
-	}
 
 	public function index()
 	{
@@ -33,4 +21,11 @@ class Home extends BaseController
 		
 		return view('sistem/beranda/beranda', $data);
 	}
+
+	public function auth()
+	{
+		$data['title'] = 'Login | SIM SKEPMA';
+		return view('auth/login', $data);
+	}
+
 }
