@@ -18,7 +18,7 @@
     </div> -->
     <?= $this->include('layout/theme_header') ?>
     <?= $this->include('layout/theme_sidebar') ?>
-    <div class="app-content content">
+    <div class="app-content content" style="background: #f6f6f7 !important;">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
