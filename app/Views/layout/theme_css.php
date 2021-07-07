@@ -35,6 +35,9 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/themes/app-assets/css/pages/dashboard-analytics.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/themes/app-assets/css/pages/card-analytics.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/themes/app-assets/css/plugins/tour/tour.css">
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/themes/app-assets/vendors/css/extensions/toastr.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/themes/app-assets/css/plugins/extensions/toastr.css">
 <!-- END: Page CSS-->
 
 <!-- Script -->
@@ -43,8 +46,11 @@
 <script src="<?php echo base_url() ?>/themes/app-assets/js/scripts/extensions/sweet-alerts.js"></script>
 <script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
 <script src="<?php echo base_url() ?>/all/js/sort-table.js"></script>
+<script src="<?php echo base_url() ?>/all/js/jquery.validate.min.js"></script>
 <script src="<?php echo base_url() ?>/all/vue/vue.js"></script>
 <script src="<?php echo base_url() ?>/all/datepicker/js/bootstrap-datepicker.min.js"></script>
+
+<script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/extensions/toastr.min.js"></script>
 
 <script>
     var site_url = '<?= site_url() ?>/';

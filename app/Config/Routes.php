@@ -59,9 +59,11 @@ $routes->post('/kegiatan/save-detail', 'Kegiatan::saveDetail');
 $routes->post('/kegiatan/delete-detail', 'Kegiatan::deleteDetail');
 $routes->post('/kegiatan/kategori-by-kegiatan', 'Kegiatan::kategoriByIdKegiatan');
 
+// Kegiatan Mahasiswa
 $routes->get('/kegiatan-mahasiswa', 'Mahasiswa::index');
 $routes->get('/kegiatan/pilih-kelompok', 'Mahasiswa::pilihKelompokKegiatan');
 $routes->get('/kegiatan/input-kegiatan/(:any)', 'Mahasiswa::inputKegiatan/$1');
+$routes->post('/kegiatan/save-kegiatan-mahasiswa', 'Mahasiswa::saveKegiatan');
 
 // $routes->group('admin', function($routes){
 // 	$routes->get('news', 'NewsAdmin::index');
