@@ -81,7 +81,7 @@
 
     $("#btn-add").click(function() {
         $.ajax({
-            url: "<?php echo site_url('kegiatan/load-modal/') ?>",
+            url: "<?php echo site_url('kegiatan/load-modal') ?>",
             type: 'post',
             dataType: 'html',
             beforeSend: function() {},

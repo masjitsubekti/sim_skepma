@@ -85,7 +85,7 @@
     $("#btn-add").click(function() {
         var id_kegiatan = $('#id_kegiatan').val();
         $.ajax({
-            url: "<?php echo site_url('kegiatan/load-modal-detail/') ?>",
+            url: "<?php echo site_url('kegiatan/load-modal-detail') ?>",
             type: 'post',
             dataType: 'html',
             data: {
