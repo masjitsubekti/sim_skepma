@@ -61,18 +61,16 @@ $routes->post('/kegiatan/kategori-by-kegiatan', 'Kegiatan::kategoriByIdKegiatan'
 
 // Kegiatan Mahasiswa
 $routes->get('/kegiatan-mahasiswa', 'Mahasiswa::index');
-$routes->get('/kegiatan/pilih-kelompok', 'Mahasiswa::pilihKelompokKegiatan');
-$routes->get('/kegiatan/input-kegiatan/(:any)', 'Mahasiswa::inputKegiatan/$1');
-$routes->post('/kegiatan/save-kegiatan-mahasiswa', 'Mahasiswa::saveKegiatan');
+$routes->get('/mhs/pilih-kelompok', 'Mahasiswa::pilihKelompokKegiatan');
+$routes->get('/mhs/input-kegiatan/(:any)', 'Mahasiswa::inputKegiatan/$1');
+$routes->post('/mhs/save-kegiatan-mahasiswa', 'Mahasiswa::saveKegiatan');
+$routes->post('/mhs/read-data/(:num)', 'Mahasiswa::readData/$1');
+$routes->get('/mhs/poin-skepma', 'Mahasiswa::poinSkepma');
 
-// $routes->group('admin', function($routes){
-// 	$routes->get('news', 'NewsAdmin::index');
-// 	$routes->get('news/(:segment)/preview', 'NewsAdmin::preview/$1');
-//  $routes->add('news/new', 'NewsAdmin::create');
-// 	$routes->add('news/(:segment)/edit', 'NewsAdmin::edit/$1');
-// 	$routes->get('news/(:segment)/delete', 'NewsAdmin::delete/$1');
-// });
-
+// Dosen
+$routes->get('/dosen/kegiatan-mahasiswa', 'Dosen::index');
+$routes->post('/dosen/read-data-kegiatan/(:num)', 'Dosen::readDataKegiatan/$1');
+$routes->post('/dosen/verifikasi-kegiatan', 'Dosen::updateStatus');
 
 /*
  * --------------------------------------------------------------------

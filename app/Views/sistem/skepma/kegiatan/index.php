@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <div class="row" style="padding-top:12px;">
                         <div class="col-md-6">
-                            <a href="<?= site_url('kegiatan/pilih-kelompok') ?>" class="btn btn-success mr-1 mb-1" id="btn-add"> <b> <i class="fa fa-plus-circle"></i> &nbsp;Tambah</b></a>
+                            <a href="<?= site_url('mhs/pilih-kelompok') ?>" class="btn btn-success mr-1 mb-1" id="btn-add"> <b> <i class="fa fa-plus-circle"></i> &nbsp;Tambah</b></a>
                         </div>
                         <div class="col-md-2">
                             <select class="form-control" name="limit" id="limit">
@@ -44,5 +44,40 @@
 <input type="hidden" name="input_column" id="input_column" value="created_at">
 <input type="hidden" name="input_sort" id="input_sort" value="desc">
 <div id="div_modal"></div>
+<script>
+    $(document).ready(function() {
+        pageLoad(1)
+    });
+
+    $('#cari').on('keypress', function(e) {
+        if (e.which == 13) {
+            pageLoad(1);
+        }
+    });
+
+    function pageLoad(i) {
+        var id_th = $('#input_id_th').val();
+        var column = $('#input_column').val();
+        var sort = $('#input_sort').val();
+        var limit = $('#limit').val();
+        var cari = $('#cari').val();
+        $.ajax({
+            url: "<?php echo site_url('mhs/read-data/') ?>" + i,
+            type: 'post',
+            dataType: 'html',
+            data: {
+                limit: limit,
+                cari: cari,
+                column:column,
+                sort:sort,
+            },
+            beforeSend: function() {},
+            success: function(result) {
+                $('#list').html(result);
+                sort_finish(id_th,sort);
+            }
+        });
+    }
+</script>
 
 <?= $this->endSection() ?>

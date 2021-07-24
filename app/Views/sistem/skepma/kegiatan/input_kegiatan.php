@@ -50,6 +50,16 @@
                                 </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="jenis_aktivitas">Jenis Aktivitas <span style="color:#e74c3c;">*</span></label>
+                                        <select class="form-control" id="jenis_aktivitas" name="jenis_aktivitas" data-error="#error-aktivitas" required>
+                                            <option value="">Pilih Jenis Aktivitas</option>
+                                            <?php foreach ($jenis_aktivitas as $ja) { ?>
+                                                <option value="<?=$ja['id_jns_akt_mhs']?>"> <?=$ja['nm_jns_akt_mhs']?></option>
+                                            <?php } ?>
+                                        </select>
+                                    <div id="error-aktivitas"></div>
+                                </div>
+                                <div class="form-group">
                                     <label for="jenis_kategori">Jenis Kegiatan <span style="color:#e74c3c;">*</span></label>
                                         <select class="form-control" id="jenis_kegiatan" name="jenis_kegiatan" data-error="#error-jenis" required>
                                             <option value="">Pilih Jenis Kegiatan</option>
@@ -125,6 +135,14 @@
         $(this).blur();    
     });
 
+    $('#jenis_aktivitas').select2({
+        placeholder: "Jenis Aktivitas . . .",
+        allowClear: true,
+    })
+    .on('change', function (e) {
+        $(this).blur();    
+    });
+
     $('#jenis_kegiatan').select2({
         placeholder: "Jenis Kegiatan . . .",
         allowClear: true,
@@ -146,6 +164,15 @@
             $('#jenis_kegiatan + span').addClass("is-invalid")
         }else{
             $('#jenis_kegiatan + span').removeClass("is-invalid")
+        }
+    })
+
+    $('#jenis_aktivitas').change(function(){
+        var valuenya=$(this).val();
+        if(valuenya=='' || valuenya==null){
+            $('#jenis_aktivitas + span').addClass("is-invalid")
+        }else{
+            $('#jenis_aktivitas + span').removeClass("is-invalid")
         }
     })
 
@@ -218,6 +245,9 @@
             jenis_kegiatan:{
                 required:true,
             },
+            jenis_aktivitas:{
+                required:true,
+            },
             kateogori:{
                 required:true,
             },
@@ -239,6 +269,9 @@
             jenis_kegiatan: {
                 required: "Jenis kegiatan harus diisi !",
             },
+            jenis_aktivitas: {
+                required: "Jenis aktivitas harus diisi !",
+            },
             kategori: {
                 required: "Kategori harus diisi !",
             },
@@ -257,6 +290,7 @@
             if (placement) {
                 $(placement).append(error)
                 $('#jenis_kegiatan + span').addClass("is-invalid")
+                $('#jenis_aktivitas + span').addClass("is-invalid")
                 $('#kategori + span').addClass("is-invalid")
             } else {
                 error.insertAfter(element);
@@ -267,7 +301,7 @@
             $('#loader-form').addClass('fa fa-spinner fa-spin');
             
             $.ajax({
-                url: '<?= site_url() ?>'+'/kegiatan/save-kegiatan-mahasiswa',
+                url: '<?= site_url() ?>'+'/mhs/save-kegiatan-mahasiswa',
                 method: 'POST',
                 dataType: 'json',    
                 data: new FormData($('#form-kegiatan')[0]),

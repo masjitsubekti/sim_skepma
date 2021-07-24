@@ -6,7 +6,7 @@ use App\Models\KegiatanModel;
 use App\Models\SkepmaModel;
 use App\Models\JenisAktivitasModel;
 
-class Mahasiswa extends BaseController
+class Dosen extends BaseController
 {
 	use ResponseTrait;
 	private $nama_menu = 'Kegiatan Mahasiswa';
@@ -29,83 +29,60 @@ class Mahasiswa extends BaseController
 		$this->breadcrumb->add('Kegiatan Mahasiswa', site_url('kegiatan-mahasiswa'));
 		$data['breadcrumbs'] = $this->breadcrumb->render();
 
-		return view('sistem/skepma/kegiatan/index', $data);
+		return view('sistem/dosen/kegiatan/index', $data);
 	}
 
-  public function poinSkepma()
-	{
-		$app_config = $this->config->app_config();
-		$data['aplikasi'] = $app_config;
-		$data['title'] = $this->nama_menu." | ".$app_config['nama_sistem'];
-		$data['menu'] = $this->nama_menu;
-		// Breadcrumbs
-		$this->breadcrumb->add('Beranda', site_url('beranda'));
-		$this->breadcrumb->add('Poin Skepma', site_url('mhs/poin-skepma'));
-		$data['breadcrumbs'] = $this->breadcrumb->render();
-    $id_mahasiswa = session()->get('auth_username');
-
-    $data['data_skepma'] = $this->MSkepma->rekapitulasiPoinSkepma($id_mahasiswa);
-		return view('sistem/skepma/poin_skepma/index', $data);
-	}
-
-  public function readData($pg = 1)
+  public function readDataKegiatan($pg = 1)
 	{
 		$key	= ($this->request->getPost('cari') != "") ? strtoupper($this->request->getPost('cari')) : "";
 		$limit	= $this->request->getPost('limit');
 		$column	= $this->request->getPost('column');
 		$sort	= $this->request->getPost('sort');
-		$id_mahasiswa = session()->get('auth_username');
+		$id_dosen = session()->get('auth_username');
 		$offset = ($limit * $pg) - $limit;
 
 		$page              = array();
 		$page['limit']     = $limit;
-		$page['count_row'] = $this->MSkepma->listCountKegiatanMhs($id_mahasiswa, $key)['jml'];
+		$page['count_row'] = $this->MSkepma->listCountKegiatanDosen($id_dosen, $key)['jml'];
 		$page['current']   = $pg;
 		$page['list']      = gen_paging($page);
 		$data['paging']    = $page;
-		$data['list']      = $this->MSkepma->listDataKegiatanMhs($id_mahasiswa, $key, $column, $sort, $limit, $offset);
+		$data['list']      = $this->MSkepma->listDataKegiatanDosen($id_dosen, $key, $column, $sort, $limit, $offset);
 
-		return view('sistem/skepma/kegiatan/list_data', $data);
+		return view('sistem/dosen/kegiatan/list_data', $data);
 	}
 
-	public function pilihKelompokKegiatan()
+	public function editKegiatan($id_kegiatan)
 	{
-		$app_config = $this->config->app_config();
-		$data['aplikasi'] = $app_config;
-		$data['title'] = $this->nama_menu." | ".$app_config['nama_sistem'];
-		$data['menu'] = $this->nama_menu;
-		// Breadcrumbs
-		$this->breadcrumb->add('Beranda', site_url('beranda'));
-		$this->breadcrumb->add('Kelompok Kegiatan', site_url('kegiatan/pilih-kelompok'));
-		$data['breadcrumbs'] = $this->breadcrumb->render();
-		$kelompokKegiatan = $this->MKelompok->select('id_kelompok_kegiatan, nama_kelompok_kegiatan, keterangan')
-											                  ->orderBy('urutan', 'asc')->findAll();
-
-		$data['kelompok_kegiatan'] = $kelompokKegiatan;
-		return view('sistem/skepma/kegiatan/pilih_kelompok', $data);
-	}
-
-	public function inputKegiatan($id_kelompok)
-	{
-		$app_config = $this->config->app_config();
-		$data['aplikasi'] = $app_config;
-		$data['title'] = $this->nama_menu." | ".$app_config['nama_sistem'];
-		$data['menu'] = $this->nama_menu;
-		// Breadcrumbs
-		$this->breadcrumb->add('Beranda', site_url('beranda'));
-		$this->breadcrumb->add('Kelompok Kegiatan', site_url('kegiatan/pilih-kelompok'));
-		$this->breadcrumb->add('Input Kegiatan', 'javascript:;');
-		$data['breadcrumbs'] = $this->breadcrumb->render();
-
-		$kegiatan = $this->MKegiatan->select('id_kegiatan, nama_kegiatan')->where('id_kelompok_kegiatan', $id_kelompok)
-                                ->orderBy('nama_kegiatan', 'asc')->findAll();
-		$jenis_aktivitas = $this->MJenisAktivitas->select('id_jns_akt_mhs, nm_jns_akt_mhs')
-                                             ->orderBy('nm_jns_akt_mhs', 'asc')->findAll();
 		
-    $data['id_kelompok_kegiatan'] = $id_kelompok;
-		$data['kegiatan'] = $kegiatan;
-		$data['jenis_aktivitas'] = $jenis_aktivitas;
-		return view('sistem/skepma/kegiatan/input_kegiatan', $data);
+	}
+
+  public function updateStatus()
+	{
+		try {
+			if($this->request->getPost('id')){
+				$id = $this->request->getPost('id');
+        $id_dosen = session()->get('auth_username');
+
+        date_default_timezone_set('Asia/Jakarta');
+        $this->MSkepma->update($id, [
+					"status" => '2',
+					"verified_at" => date('Y-m-d H:i:s'),
+					"verified_by" => $id_dosen,
+				]);
+
+				$response['success'] = true;
+				$response['message'] = "Kegiatan berhasil diverifikasi !";
+			}else{
+				$response['success'] = false;
+				$response['message'] = "Data tidak ditemukan !";
+			}
+			return $this->respond($response, 200);
+		} catch (\Exception $e) {
+			$response['success'] = false;
+			$response['message'] = "Verifikasi Gagal !";
+			return $this->respond($response, 500);
+		}
 	}
 
 	public function saveKegiatan()

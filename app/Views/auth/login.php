@@ -160,14 +160,9 @@
             },
         },
         created() {
-            // this.load_data()
+
         },
         methods: {
-            load_data: function(params) {
-                //   console.log("Hello Word")
-                // this.$v.$reset()
-            },
-
             auth: function(event) {
                 const self = this;
                 self.$v.username.$touch();
