@@ -8,10 +8,10 @@ class ConfigModel extends Model
     public function app_config()
     {
         $data = $this->table($this->table)
-		->where('id', 'CONF1')
-		->limit(1)
-		->get()
-		->getRowArray();
+                ->where('id', 'CONF1')
+                ->limit(1)
+                ->get()
+                ->getRowArray();
         return $data;
     }
 }

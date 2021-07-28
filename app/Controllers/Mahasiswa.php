@@ -173,4 +173,18 @@ class Mahasiswa extends BaseController
 			return $this->respond($e->getMessage(), 500);
 		}
 	}
+
+  function previewDokumen(){
+    $data['filenya']= $filenya =$this->request->getPost('filenya');
+    $data['judul'] = $this->request->getPost('judul');
+    
+    $_filenya = explode(".",$filenya);
+    $data['extensi'] = $_filenya[1];
+    $data['file_path'] = base_url()."/uploads/bukti_kegiatan/".$filenya;
+    return view('sistem/skepma/kegiatan/modal_preview.php',$data);
+  }
+
+  function downloadFile($filenya){
+    return $this->response->download('uploads/bukti_kegiatan/' . $filenya, null);
+  }
 }

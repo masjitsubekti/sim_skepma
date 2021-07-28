@@ -206,7 +206,7 @@ pre code {
 }
 
 .table th, .table td {
-  padding : 1rem;
+  /* padding : 1rem; */
   vertical-align : middle;
 }
 

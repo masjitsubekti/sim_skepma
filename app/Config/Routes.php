@@ -66,10 +66,17 @@ $routes->get('/mhs/input-kegiatan/(:any)', 'Mahasiswa::inputKegiatan/$1');
 $routes->post('/mhs/save-kegiatan-mahasiswa', 'Mahasiswa::saveKegiatan');
 $routes->post('/mhs/read-data/(:num)', 'Mahasiswa::readData/$1');
 $routes->get('/mhs/poin-skepma', 'Mahasiswa::poinSkepma');
+$routes->post('/dokumen/preview', 'Mahasiswa::previewDokumen');
+$routes->get('/dokumen/download/(:any)', 'Mahasiswa::downloadFile/$1');
 
 // Dosen
 $routes->get('/dosen/kegiatan-mahasiswa', 'Dosen::index');
-$routes->post('/dosen/read-data-kegiatan/(:num)', 'Dosen::readDataKegiatan/$1');
+$routes->get('/dosen/daftar-mahasiswa', 'Dosen::daftarMhs');
+$routes->get('/mhs/detail/(:any)', 'Dosen::detailKegiatanMhs/$1');
+$routes->get('/mhs/daftar-kegiatan/(:any)', 'Dosen::daftarKegiatanMhs/$1');
+$routes->post('/mhs/read-data-kegiatan/(:num)', 'Dosen::readDataKegiatanMhs/$1');
+$routes->post('/dosen/read-data-kegiatan/(:num)', 'Dosen::readDataPengajuanKegiatan/$1');
+$routes->post('/dosen/read-data-mhs/(:num)', 'Dosen::readDataMhs/$1');
 $routes->post('/dosen/verifikasi-kegiatan', 'Dosen::updateStatus');
 
 /*

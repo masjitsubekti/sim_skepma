@@ -32,8 +32,17 @@
                       <?php } ?>
                     </td>
                     <td class="text-center">
-                        <a href="javascript:;" data-id="<?=$row->id_skepma?>" data-name="<?=$row->nama_kegiatan?>" class="btn btn-sm btn-icon btn-warning waves-effect waves-light btn-ubah" data-toggle="tooltip" title="Edit Kegiatan"><i style="color:#fff;" class="fa fa-edit"></i></a>
-                        <a href="javascript:;" data-id="<?=$row->id_skepma?>" data-name="<?=$row->nama_kegiatan?>" class="btn btn-sm btn-icon btn-danger waves-effect waves-light btn-hapus" data-toggle="tooltip" title="Hapus Kegiatan"><i class="fa fa-trash"></i></a>	    
+                        <?php 
+                        $role = session()->get('auth_id_role');
+                        if($role=='HA03'){ // Dosen ?>
+                          <a href="<?= site_url('mhs/detail/'.$row->id_skepma) ?>" class="btn btn-sm btn-icon btn-primary waves-effect waves-light btn-detail" data-toggle="tooltip" title="Detail Kegiatan"><i style="color:#fff;" class="fa fa-eye"></i></a>
+                          <a href="javascript:;" data-id="<?=$row->id_skepma?>" data-name="<?=$row->nama_kegiatan?>" class="btn btn-sm btn-icon btn-warning waves-effect waves-light btn-ubah" data-toggle="tooltip" title="Edit Kegiatan"><i style="color:#fff;" class="fa fa-edit"></i></a>
+                          <a href="javascript:;" data-id="<?=$row->id_skepma?>" data-name="<?=$row->nama_kegiatan?>" class="btn btn-sm btn-icon btn-danger waves-effect waves-light btn-hapus" data-toggle="tooltip" title="Hapus Kegiatan"><i class="fa fa-trash"></i></a>	    
+                        <?php }else{ ?>
+                          <a href="<?= site_url('mhs/detail/'.$row->id_skepma) ?>" class="btn btn-sm btn-icon btn-primary waves-effect waves-light btn-detail" data-toggle="tooltip" title="Detail Kegiatan"><i style="color:#fff;" class="fa fa-eye"></i></a>
+                          <a href="javascript:;" data-id="<?=$row->id_skepma?>" data-name="<?=$row->nama_kegiatan?>" class="btn btn-sm btn-icon btn-success waves-effect waves-light btn-verifikasi" data-toggle="tooltip" title="Setujui Kegiatan"><i style="color:#fff;" class="fa fa-check"></i></a>
+                          <a href="javascript:;" data-id="<?=$row->id_skepma?>" data-name="<?=$row->nama_kegiatan?>" class="btn btn-sm btn-icon btn-danger waves-effect waves-light btn-tolak" data-toggle="tooltip" title="Tolak Kegiatan"><i class="fa fa-times-circle"></i></a>	    
+                        <?php } ?>
                     </td>
                 </tr>
             <?php } ?>
