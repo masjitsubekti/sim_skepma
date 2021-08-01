@@ -90,7 +90,7 @@ class Kegiatan extends BaseController
 				]);
 	
 				$response['success'] = TRUE;
-				$response['message'] = "Data Berhasil Disimpan";
+				$response['message'] = "Data Berhasil Diubah";
 			}
 			return $this->respond($response, 200);
 		} catch (\Exception $e) {
@@ -228,7 +228,7 @@ class Kegiatan extends BaseController
 				]);
 	
 				$response['success'] = TRUE;
-				$response['message'] = "Data Berhasil Disimpan";
+				$response['message'] = "Data Berhasil Diubah";
 			}
 			return $this->respond($response, 200);
 		} catch (\Exception $e) {

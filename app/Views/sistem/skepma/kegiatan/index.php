@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <div class="row" style="padding-top:12px;">
                         <div class="col-md-6">
-                            <a href="<?= site_url('mhs/pilih-kelompok') ?>" class="btn btn-success mr-1 mb-1" id="btn-add"> <b> <i class="fa fa-plus-circle"></i> &nbsp;Tambah</b></a>
+                            <a href="<?= site_url('mhs/tambah-kegiatan') ?>" class="btn btn-success mr-1 mb-1" id="btn-add"> <b> <i class="fa fa-plus-circle"></i> &nbsp;Tambah</b></a>
                         </div>
                         <div class="col-md-2">
                             <select class="form-control" name="limit" id="limit">

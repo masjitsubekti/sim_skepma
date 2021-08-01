@@ -61,9 +61,10 @@ $routes->post('/kegiatan/kategori-by-kegiatan', 'Kegiatan::kategoriByIdKegiatan'
 
 // Kegiatan Mahasiswa
 $routes->get('/kegiatan-mahasiswa', 'Mahasiswa::index');
-$routes->get('/mhs/pilih-kelompok', 'Mahasiswa::pilihKelompokKegiatan');
-$routes->get('/mhs/input-kegiatan/(:any)', 'Mahasiswa::inputKegiatan/$1');
+$routes->get('/mhs/tambah-kegiatan', 'Mahasiswa::tambahKegiatan');
+$routes->get('/mhs/ubah-kegiatan/(:any)', 'Mahasiswa::ubahKegiatan/$1');
 $routes->post('/mhs/save-kegiatan-mahasiswa', 'Mahasiswa::saveKegiatan');
+$routes->post('/mhs/delete-kegiatan-mahasiswa', 'Mahasiswa::deleteKegiatan');
 $routes->post('/mhs/read-data/(:num)', 'Mahasiswa::readData/$1');
 $routes->get('/mhs/poin-skepma', 'Mahasiswa::poinSkepma');
 $routes->post('/dokumen/preview', 'Mahasiswa::previewDokumen');

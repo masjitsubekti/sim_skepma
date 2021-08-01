@@ -36,7 +36,7 @@
                         $role = session()->get('auth_id_role');
                         if($role=='HA03'){ // Dosen ?>
                           <a href="<?= site_url('mhs/detail/'.$row->id_skepma) ?>" class="btn btn-sm btn-icon btn-primary waves-effect waves-light btn-detail" data-toggle="tooltip" title="Detail Kegiatan"><i style="color:#fff;" class="fa fa-eye"></i></a>
-                          <a href="javascript:;" data-id="<?=$row->id_skepma?>" data-name="<?=$row->nama_kegiatan?>" class="btn btn-sm btn-icon btn-warning waves-effect waves-light btn-ubah" data-toggle="tooltip" title="Edit Kegiatan"><i style="color:#fff;" class="fa fa-edit"></i></a>
+                          <a href="<?= site_url('mhs/ubah-kegiatan/'.$row->id_skepma) ?>" class="btn btn-sm btn-icon btn-warning waves-effect waves-light btn-ubah" data-toggle="tooltip" title="Edit Kegiatan"><i style="color:#fff;" class="fa fa-edit"></i></a>
                           <a href="javascript:;" data-id="<?=$row->id_skepma?>" data-name="<?=$row->nama_kegiatan?>" class="btn btn-sm btn-icon btn-danger waves-effect waves-light btn-hapus" data-toggle="tooltip" title="Hapus Kegiatan"><i class="fa fa-trash"></i></a>	    
                         <?php }else{ ?>
                           <a href="<?= site_url('mhs/detail/'.$row->id_skepma) ?>" class="btn btn-sm btn-icon btn-primary waves-effect waves-light btn-detail" data-toggle="tooltip" title="Detail Kegiatan"><i style="color:#fff;" class="fa fa-eye"></i></a>
@@ -124,7 +124,7 @@
             $.ajax({
               method: 'POST',
               dataType: 'json',
-              url: '<?= site_url() ?>'+'/mhs/delete',
+              url: '<?= site_url() ?>'+'/mhs/delete-kegiatan-mahasiswa',
               data: {
                 id: id
               },
