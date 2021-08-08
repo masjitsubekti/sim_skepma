@@ -91,5 +91,27 @@ class SkepmaModel extends Model
         ");
         return $query;
     }
+
+    function getCountStatusKegiatan($id, $is_role){
+      $q = "
+          select 
+            sum(case when sk.status = '1' then 1 else 0 end) as menunggu_verifikasi,
+            sum(case when sk.status = '2' then 1 else 0 end) as diverifikasi,
+            sum(case when sk.status = '3' then 1 else 0 end) as ditolak
+          from t_skepma sk
+          join mhs m on sk.id_mahasiswa = m.mhsid
+      ";
+
+      if($is_role=='HA02'){
+          $q .= " where m.dosid = '$id' ";
+      }else if($is_role=='HA03'){
+          $q .= " where sk.id_mahasiswa = '$id' ";
+      }else{
+        // No Actions
+      }
+
+      $query = $this->db->query($q);
+      return $query;
+    }
 }
 ?>

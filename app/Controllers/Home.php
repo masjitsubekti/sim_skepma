@@ -1,13 +1,16 @@
 <?php
 namespace App\Controllers;
+use CodeIgniter\API\ResponseTrait;
+use App\Models\SkepmaModel;
 
 class Home extends BaseController
 {
+	use ResponseTrait;
 	private $nama_menu = 'Beranda';
 	public function __construct()
-    {
-		// must_login();
-	}
+  {
+		$this->MSkepma = new SkepmaModel();
+  }
 
 	public function index()
 	{
@@ -22,10 +25,11 @@ class Home extends BaseController
 		return view('sistem/beranda/beranda', $data);
 	}
 
-	public function auth()
+	public function getDataDashboard()
 	{
-		$data['title'] = 'Login | SIM SKEPMA';
-		return view('auth/login', $data);
+    $id = session()->get('auth_username');
+    $role = session()->get('auth_id_role');
+    $data['dashboard'] = $this->MSkepma->getCountStatusKegiatan($id, $role)->getRowArray();
+ 		return view('sistem/beranda/data_dashboard', $data);
 	}
-
 }

@@ -36,6 +36,7 @@ $routes->get('/', 'Auth::index');
 $routes->post('/logout', 'Auth::logout');
 $routes->post('/check_auth', 'Auth::check_auth');
 $routes->get('/beranda', 'Home::index', ['filter' => 'auth']);
+$routes->post('/dashboard/status-kegiatan', 'Home::getDataDashboard');
 
 // Master Kelompok Kegiatan 
 $routes->get('/master/kelompok-kegiatan', 'KelompokKegiatan::index', ['filter' => 'auth']);
@@ -79,6 +80,13 @@ $routes->post('/mhs/read-data-kegiatan/(:num)', 'Dosen::readDataKegiatanMhs/$1')
 $routes->post('/dosen/read-data-kegiatan/(:num)', 'Dosen::readDataPengajuanKegiatan/$1');
 $routes->post('/dosen/read-data-mhs/(:num)', 'Dosen::readDataMhs/$1');
 $routes->post('/dosen/verifikasi-kegiatan', 'Dosen::updateStatus');
+
+// User
+$routes->get('/setting/user', 'User::index', ['filter' => 'auth']);
+$routes->post('/user/read-data/(:num)', 'User::read_data/$1');
+$routes->post('/user/load-modal', 'User::load_modal');
+$routes->post('/user/save', 'User::save');
+$routes->post('/user/delete', 'User::delete');
 
 /*
  * --------------------------------------------------------------------

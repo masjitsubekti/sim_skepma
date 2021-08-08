@@ -5,7 +5,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header" style="background-color:#7E74FC !important; padding:0.75rem 1.25rem;">
-                <span style="color:#ffffff;"><i class="fa fa-bars"></i><b> Kelompok Kegiatan</b></span>
+                <span style="color:#ffffff;"><i class="fa fa-bars"></i><b> User</b></span>
             </div>
             <div class="card-content">
                 <div class="card-body">
@@ -40,8 +40,8 @@
     </div>
 </div>
 <!-- DATA SORT -->
-<input type="hidden" name="input_id_th" id="input_id_th" value="#column_urutan">
-<input type="hidden" name="input_column" id="input_column" value="urutan">
+<input type="hidden" name="input_id_th" id="input_id_th" value="#column_nama">
+<input type="hidden" name="input_column" id="input_column" value="nama">
 <input type="hidden" name="input_sort" id="input_sort" value="asc">
 <div id="div_modal"></div>
 <script>
@@ -62,7 +62,7 @@
         var limit = $('#limit').val();
         var cari = $('#cari').val();
         $.ajax({
-            url: "<?php echo site_url('kelompok-kegiatan/read-data/') ?>" + i,
+            url: "<?php echo site_url('user/read-data/') ?>" + i,
             type: 'post',
             dataType: 'html',
             data: {
@@ -81,7 +81,7 @@
 
     $("#btn-add").click(function() {
         $.ajax({
-            url: "<?php echo site_url('kelompok-kegiatan/load-modal') ?>",
+            url: "<?php echo site_url('user/load-modal') ?>",
             type: 'post',
             dataType: 'html',
             beforeSend: function() {},
