@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/all/css/main.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/all/datepicker/css/bootstrap-datepicker.min.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/all/sweetalert2/sweetalert2.min.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/all/dual_selectboxs/dist/bootstrap-duallistbox.css">
 
 <!-- BEGIN: Page CSS-->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>/themes/app-assets/css/core/menu/menu-types/vertical-menu.css">
@@ -49,6 +50,7 @@
 <script src="<?php echo base_url() ?>/all/js/jquery.validate.min.js"></script>
 <script src="<?php echo base_url() ?>/all/vue/vue.js"></script>
 <script src="<?php echo base_url() ?>/all/datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="<?php echo base_url() ?>/all/dual_selectboxs/dist/jquery.bootstrap-duallistbox.js"></script>
 
 <script src="<?php echo base_url() ?>/themes/app-assets/vendors/js/extensions/toastr.min.js"></script>
 

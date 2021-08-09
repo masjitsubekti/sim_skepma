@@ -80,13 +80,19 @@ $routes->post('/mhs/read-data-kegiatan/(:num)', 'Dosen::readDataKegiatanMhs/$1')
 $routes->post('/dosen/read-data-kegiatan/(:num)', 'Dosen::readDataPengajuanKegiatan/$1');
 $routes->post('/dosen/read-data-mhs/(:num)', 'Dosen::readDataMhs/$1');
 $routes->post('/dosen/verifikasi-kegiatan', 'Dosen::updateStatus');
-
 // User
 $routes->get('/setting/user', 'User::index', ['filter' => 'auth']);
 $routes->post('/user/read-data/(:num)', 'User::read_data/$1');
 $routes->post('/user/load-modal', 'User::load_modal');
 $routes->post('/user/save', 'User::save');
 $routes->post('/user/delete', 'User::delete');
+// Role Permission
+$routes->get('/setting/role-permission', 'MenuUser::index', ['filter' => 'auth']);
+$routes->post('/menu-user/read-data/(:num)', 'MenuUser::read_data/$1');
+$routes->post('/menu-user/load-modal', 'MenuUser::load_modal');
+$routes->post('/menu-user/save', 'MenuUser::save');
+$routes->post('/menu-user/delete', 'MenuUser::delete');
+$routes->post('/menu-user/sub-menu', 'MenuUser::get_sub_menu');
 
 /*
  * --------------------------------------------------------------------

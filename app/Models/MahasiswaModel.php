@@ -14,22 +14,34 @@ class MahasiswaModel extends Model
     protected $useTimestamps = false;
 
     function listCountMhs($id_dosen="", $key=""){
-      $query = $this->db->query("
-            select count(*) as jml from mhs
-            where concat(mhsnama) ilike '%$key%'
-            and dosid = '$id_dosen'
-      ")->getRowArray();
+      $q = "
+          select count(*) as jml from mhs
+          where concat(mhsid, mhsnama) ilike '%$key%'
+      ";
+
+      if($id_dosen!=""){
+        $q .= " and dosid = '$id_dosen' ";
+      }
+
+      $query = $this->db->query($q)->getRowArray();
       return $query;
     }
 
     function listDataMhs($id_dosen="", $key="", $column="", $sort="", $limit="", $offset=""){
-        $query = $this->db->query("
+        $q = "
             select * from mhs
-            where concat(mhsnama) ilike '%$key%'
-            and dosid = '$id_dosen'
+            where concat(mhsid, mhsnama) ilike '%$key%'
+        ";
+        
+        if($id_dosen!=""){
+          $q .= " and dosid = '$id_dosen' ";
+        }
+
+        $q .= " 
             order by $column $sort
-            limit $limit offset $offset
-        ");
+            limit $limit offset $offset 
+        ";
+        $query = $this->db->query($q);
         return $query;
     }
 }

@@ -10,8 +10,8 @@
             </div>
             <form action="" id="form">
             <div class="modal-body">
-                <input type="text" name="modeform" id="modeform">
-                <input type="text" name="id_user" id="id_user" value="<?php if(isset($data)){echo $data['id_user'];} ?>">
+                <input type="hidden" name="modeform" id="modeform">
+                <input type="hidden" name="id_user" id="id_user" value="<?php if(isset($data)){echo $data['id_user'];} ?>">
                 <div class="form-group">
                     <label for="nama" class="form-label">Nama<span style="color:red;">*</span></label>
                     <input class="form-control" id="nama" name="nama" type="text" placeholder="Nama User . . ." autocomplete="off" 

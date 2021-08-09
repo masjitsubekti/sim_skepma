@@ -118,8 +118,14 @@ class Dosen extends BaseController
 		$limit	= $this->request->getPost('limit');
 		$column	= $this->request->getPost('column');
 		$sort	= $this->request->getPost('sort');
-		$id_dosen = session()->get('auth_username');
-		$offset = ($limit * $pg) - $limit;
+    $role = session()->get('auth_id_role');
+    $offset = ($limit * $pg) - $limit;
+
+    if($role=='HA02'){ // Dosen
+      $id_dosen = session()->get('auth_username');
+    }else{
+      $id_dosen = "";
+    }
 
 		$page              = array();
 		$page['limit']     = $limit;
