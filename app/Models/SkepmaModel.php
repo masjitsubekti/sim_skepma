@@ -69,13 +69,6 @@ class SkepmaModel extends Model
         return $query;
     }
 
-    function rekapitulasiPoinSkepma ($id_mahasiswa){
-        $query = $this->db->query("
-            select * from fn_rekapitulasi_skepma_mahasiswa('$id_mahasiswa')
-        ");
-        return $query;
-    }
-
     function getDetailSkepma ($id_skepma){
         $query = $this->db->query("
             select sk.*, kkg.nama_kelompok_kegiatan, coalesce(dk.kategori::varchar, kt.kategori) as kategori, k.nama_kegiatan as jenis_kegiatan,  
@@ -111,6 +104,20 @@ class SkepmaModel extends Model
       }
 
       $query = $this->db->query($q);
+      return $query;
+    }
+
+    function getLaporanSkepma ($tgl_awal, $tgl_akhir){
+      $query = $this->db->query("
+          select * from fn_report_skepma('$tgl_awal', '$tgl_akhir')
+      ");
+      return $query;
+    }
+
+    function rekapitulasiPoinSkepma ($id_mahasiswa){
+      $query = $this->db->query("
+          select * from fn_rekapitulasi_skepma_mahasiswa('$id_mahasiswa')
+      ");
       return $query;
     }
 }

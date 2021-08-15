@@ -93,6 +93,10 @@ $routes->post('/menu-user/load-modal', 'MenuUser::load_modal');
 $routes->post('/menu-user/save', 'MenuUser::save');
 $routes->post('/menu-user/delete', 'MenuUser::delete');
 $routes->post('/menu-user/sub-menu', 'MenuUser::get_sub_menu');
+// Laporan
+$routes->get('/laporan', 'Report::index', ['filter' => 'auth']);
+$routes->get('/report/laporan-skepma', 'Report::export_lap_skepma');
+// $routes->get('/report/laporan-rekap-kegiatan', 'Report::export_laporan_skepma');
 
 /*
  * --------------------------------------------------------------------

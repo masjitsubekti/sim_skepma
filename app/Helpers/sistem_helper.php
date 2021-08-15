@@ -68,6 +68,7 @@ function generate_tanggal_indonesia($tgl){
     $tahun = date('Y',$waktu_db);
     return $hari.' '.$bulan.' '.$tahun;
 }
+
 function tgl_indo($tanggal){
     $date = strtotime($tanggal);
     $tanggal =  date('Y-m-d', $date);
@@ -88,4 +89,11 @@ function tgl_indo($tanggal){
     $pecahkan = explode('-', $tanggal);
     return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
 }
+
+function format_tanggal($tanggal, $format){
+  $date = strtotime($tanggal);
+  $tanggal = date($format, $date);
+  return $tanggal;
+}
+
 ?>
