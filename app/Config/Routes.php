@@ -37,6 +37,7 @@ $routes->post('/logout', 'Auth::logout');
 $routes->post('/check_auth', 'Auth::check_auth');
 $routes->get('/beranda', 'Home::index', ['filter' => 'auth']);
 $routes->post('/dashboard/status-kegiatan', 'Home::getDataDashboard');
+$routes->post('/dashboard/admin', 'Home::getDataDashboardAdmin');
 
 // Master Kelompok Kegiatan 
 $routes->get('/master/kelompok-kegiatan', 'KelompokKegiatan::index', ['filter' => 'auth']);
@@ -95,8 +96,8 @@ $routes->post('/menu-user/delete', 'MenuUser::delete');
 $routes->post('/menu-user/sub-menu', 'MenuUser::get_sub_menu');
 // Laporan
 $routes->get('/laporan', 'Report::index', ['filter' => 'auth']);
-$routes->get('/report/laporan-skepma', 'Report::export_lap_skepma');
-// $routes->get('/report/laporan-rekap-kegiatan', 'Report::export_laporan_skepma');
+$routes->get('/report/laporan-skepma', 'Report::export_laporan_skepma');
+$routes->get('/report/laporan-rekapitulasi-kegiatan', 'Report::export_laporan_rekap_kegiatan');
 
 /*
  * --------------------------------------------------------------------

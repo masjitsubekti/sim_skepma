@@ -7,6 +7,7 @@
     $(document).ready(function() {
         loadDataDashboard()
     });
+
     function loadDataDashboard(){
       $.ajax({
           url: "<?= site_url('dashboard/status-kegiatan')?>",
@@ -20,5 +21,4 @@
       });
     }
 </script>
-
 <?= $this->endSection() ?>

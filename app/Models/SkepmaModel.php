@@ -107,9 +107,20 @@ class SkepmaModel extends Model
       return $query;
     }
 
+    /**
+     * Report Skepma
+     */
+
     function getLaporanSkepma ($tgl_awal, $tgl_akhir){
       $query = $this->db->query("
           select * from fn_report_skepma('$tgl_awal', '$tgl_akhir')
+      ");
+      return $query;
+    }
+
+    function getLaporanRekapKegiatan ($tgl_awal, $tgl_akhir){
+      $query = $this->db->query("
+          select * from fn_report_rekapitulasi_kegiatan('$tgl_awal', '$tgl_akhir')
       ");
       return $query;
     }
@@ -120,5 +131,6 @@ class SkepmaModel extends Model
       ");
       return $query;
     }
+    
 }
 ?>

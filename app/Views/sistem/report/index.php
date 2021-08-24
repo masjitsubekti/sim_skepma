@@ -19,8 +19,9 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <select class="form-control" name="jenis_laporan" id="jenis_laporan">
+                            <option value="">Pilih Jenis Laporan</option>
                             <option value="1">Laporan SKEPMA</option>
-                            <option value="2">Laporan Rekap Kegiatan</option>
+                            <option value="2">Laporan Rekapitulasi Kegiatan</option>
                           </select>
                         </div>
                       </div>
@@ -137,20 +138,41 @@
   $('.date-picker').datepicker('setDate', new Date());
 
   function export_laporan(){
-     var periode = $('.check-mode:checked').val();
-     var tahun = $('#tahun').val();
-     const bulan = $('#bulan').val();
-     const tahunan = $('#tahunan').val();
-    if(periode!==undefined){
-        tahun = (periode == 'by_tahun') ? tahunan : tahun;
-        var rentangTanggal = getTanggal(periode, bulan, tahun);
-        if(rentangTanggal.success===true){
-            window.location.href = "<?= site_url('report/laporan-skepma') ?>"+"?tgl_awal="+ rentangTanggal.tglAwal +"&tgl_akhir="+ rentangTanggal.tglAkhir;
-        }else{
-            console.log("Filter harus diisi")   
-        }
+    var periode = $('.check-mode:checked').val();
+    var tahun = $('#tahun').val();
+    const bulan = $('#bulan').val();
+    const tahunan = $('#tahunan').val();
+    const jenis_lap = $('#jenis_laporan').val();
+    var link = ""
+    if(jenis_lap=='1'){
+      link = "<?= site_url('report/laporan-skepma') ?>";
+    }else if(jenis_lap=='2'){
+      link = "<?= site_url('report/laporan-rekapitulasi-kegiatan') ?>";
     }else{
-       console.log("cek periode", periode)
+      link = "";
+    }
+
+    if(link!=""){
+      if(periode!==undefined){
+          tahun = (periode == 'by_tahun') ? tahunan : tahun;
+          var rentangTanggal = getTanggal(periode, bulan, tahun);
+          if(rentangTanggal.success===true){
+              window.location.href = link+"?tgl_awal="+ rentangTanggal.tglAwal +"&tgl_akhir="+ rentangTanggal.tglAkhir;
+          }else{
+              console.log("Filter harus diisi")   
+          }
+      }else{
+        console.log("cek periode", periode)
+        toastr.error('Harap pilih periode laporan!', 'Maaf', {
+          "closeButton": true,
+          "timeOut": 3000
+        });
+      }
+    }else{
+      toastr.error('Harap pilih jenis laporan!', 'Maaf', {
+        "closeButton": true,
+        "timeOut": 3000
+      });
     }
   }
 
