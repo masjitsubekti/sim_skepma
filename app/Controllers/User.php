@@ -126,4 +126,71 @@ class User extends BaseController
 			return $this->respond($response, 200);
 		}
 	}
+
+  /**
+   * Update Profile Users
+   */
+
+  public function profile()
+	{
+		$app_config = $this->config->app_config();
+		$data['aplikasi'] = $app_config;
+		$data['title'] = $this->nama_menu." | ".$app_config['nama_sistem'];
+		$data['menu'] = $this->nama_menu;
+		// Breadcrumbs
+		$this->breadcrumb->add('Beranda', site_url('beranda'));
+		$this->breadcrumb->add('Profile', 'javascript:;');
+		$data['breadcrumbs'] = $this->breadcrumb->render();
+    
+    $id = session()->get('auth_id_user');
+    $data_user = $this->MUser->find($id);
+    $data['data_user'] = $data_user;  
+		return view('sistem/setting/profile/index', $data);
+	}
+
+  function updatePassword() {
+    $id = $this->request->getPost('id_user');
+    $password = $this->request->getPost("password_baru");
+    $konfirmasi_password = $this->request->getPost("konfirmasi_password");
+    if($password!=$konfirmasi_password){
+      $response['success'] = false;
+      $response['message'] = "Maaf, Konfirmasi password tidak sama!";
+    }else{
+      $password = md5($password);	
+      date_default_timezone_set('Asia/Jakarta');
+      $this->MUser->update($id, [
+        "password" => $password,
+      ]);
+  
+      $response['success'] = true;
+      $response['message'] = "Password berhasil diperbarui!";
+    }
+    return $this->respond($response, 200);	
+  }
+
+  function updateProfile() {
+    $id = $this->request->getPost('id_user');
+    $nama = $this->request->getPost("nama");
+    $email = $this->request->getPost("email");
+    $cekEmail = $this->db->query("
+        select * from users 
+        where id_user <> '$id' and UPPER(email) = UPPER('$email')
+    ")->getNumRows();
+
+    if($cekEmail!=0){
+      $response['success'] = false;
+      $response['message'] = "Maaf, Email sudah digunakan!";
+    }else{	
+      date_default_timezone_set('Asia/Jakarta');
+      $this->MUser->update($id, [
+        "nama" => $nama,
+        "email" => $email,
+      ]);
+  
+      $response['success'] = true;
+      $response['message'] = "Password berhasil diperbarui!";
+      $response['uid'] = $id;
+    }
+    return $this->respond($response, 200);	
+  }
 }

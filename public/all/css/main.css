@@ -118,12 +118,15 @@ label.error-block {
 }
 
 td{
-	color : rgb(80, 79, 79);
-  
-	font-family: 'Montserrat', Helvetica, Arial, serif;
-  font-size: 0.95rem;
-  /* font-size: 13px; */
-  font-weight:500;
+	/* color : rgb(80, 79, 79); */
+	font-family: Arial, serif;
+  /* font-size: 0.95rem; */
+  font-size: 0.97rem;
+  /* font-size: 14px; */
+  line-height: 1.5;
+  color: #495057;
+  /* font-family: Poppins,sans-serif; */
+  font-weight: 400;
 	padding:7px 7px 7px 7px !important;
 }
 

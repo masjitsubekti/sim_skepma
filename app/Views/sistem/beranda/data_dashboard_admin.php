@@ -62,12 +62,26 @@
     font-size:65px !important;
   }
 </style>
+<div class="media" style="background:#fff; padding:15px;">
+    <div class="mr-2">
+        <img src="<?= base_url('all/images/icon/user.png') ?>" height="70" width="70" alt="" class="avatar-md rounded-circle img-thumbnail">
+    </div>
+    <div class="media-body align-self-center">
+        <div class="text-muted">
+            <h5>Selamat Datang <?=  session()->get("auth_nama_user"); ?>.</h5>
+            <p class="mb-0" style="color:#505050;">
+              Aplikasi SKEPMA ini merupakan alat bantu dan media pencatatan kegiatan mahasiswa, silahkan pilih menu disamping untuk memulai.
+            </p>
+        </div>
+    </div>
+</div>
+<br>
 <div class="row">  
   <div class="col-md-3">
     <div class="small-box bg-blue">
       <div class="inner">
-        <h3><?= $dashboard['proses_verifikasi'] ?></h3>
-        <p>Proses Verifikasi</p>
+        <h3><?= $dashboard['total_kegiatan'] ?></h3>
+        <p>Total Kegiatan</p>
       </div>
       <div class="icon">
         <i class="fa fa-book"></i>
@@ -90,8 +104,8 @@
   <div class="col-md-3">
     <div class="small-box bg-yellow">
       <div class="inner">
-        <h3><?= $dashboard['total_kegiatan'] ?></h3>
-        <p>Total Kegiatan</p>
+        <h3><?= $dashboard['proses_verifikasi'] ?></h3>
+        <p>Proses Verifikasi</p>
       </div>
       <div class="icon">
         <i class="fa fa-book"></i>
@@ -112,8 +126,7 @@
     </div>
   </div>
 </div>
-<br>
-<div class="row">
+<div class="row mt-1">
   <div class="col-md-12">
     <div class="card" style="box-shadow:none !important;">
       <div class="card-body">
@@ -131,7 +144,7 @@
         type: 'column'
     },
     title: {
-        text: 'Chart Status Kegiatan Mahasiswa'
+        text: 'Chart Aktivitas Kegiatan Mahasiswa'
     },
     credits: {
       enabled: false

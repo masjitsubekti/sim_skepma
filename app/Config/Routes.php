@@ -98,6 +98,10 @@ $routes->post('/menu-user/sub-menu', 'MenuUser::get_sub_menu');
 $routes->get('/laporan', 'Report::index', ['filter' => 'auth']);
 $routes->get('/report/laporan-skepma', 'Report::export_laporan_skepma');
 $routes->get('/report/laporan-rekapitulasi-kegiatan', 'Report::export_laporan_rekap_kegiatan');
+// Profile
+$routes->get('/setting/profile', 'User::profile', ['filter' => 'auth']);
+$routes->post('/user/update-profile', 'User::updateProfile');
+$routes->post('/user/ubah-password', 'User::updatePassword');
 
 /*
  * --------------------------------------------------------------------
